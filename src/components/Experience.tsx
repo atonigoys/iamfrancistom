@@ -35,10 +35,10 @@ const Experience = () => {
           {experiences.map((exp, i) => (
             <motion.div
               key={exp.role}
-              initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40, scale: 0.95 }}
+              whileInView={{ opacity: 1, x: 0, scale: 1 }}
               viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.6, delay: i * 0.2 }}
+              transition={{ duration: 0.7, delay: i * 0.2, ease: "easeOut" }}
               className={`relative mb-12 pl-12 md:pl-0 md:w-1/2 ${
                 i % 2 === 0 ? "md:pr-12 md:text-right" : "md:ml-auto md:pl-12"
               }`}
