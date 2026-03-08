@@ -256,7 +256,8 @@ const SimpleCard = ({ p, i }: { p: Project; i: number }) => (
   </motion.div>
 );
 
-const ITEMS_PER_PAGE = 2;
+const ITEMS_PER_PAGE_ALL = 4;
+const ITEMS_PER_PAGE_OTHER = 2;
 
 const Portfolio = () => {
   const [active, setActive] = useState<Category>("All");
