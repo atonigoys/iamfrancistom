@@ -17,10 +17,10 @@ const Contact = () => {
 
       <div className="max-w-3xl mx-auto relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 30, scale: 0.96 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
           className="text-center mb-12"
         >
           <span className="text-primary text-sm font-medium tracking-widest uppercase">Get in Touch</span>
@@ -33,10 +33,10 @@ const Contact = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 30, scale: 0.96 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
           className="glass-card overflow-hidden rounded-xl shadow-[0_0_50px_-12px_hsl(var(--primary)/0.3)] border border-primary/10"
         >
           <iframe
@@ -50,10 +50,10 @@ const Contact = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 20, scale: 0.96 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
           className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-10"
         >
           <a
@@ -75,10 +75,10 @@ const Contact = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 20, scale: 0.96 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
           className="flex items-center justify-center gap-5 mt-8"
         >
           {[

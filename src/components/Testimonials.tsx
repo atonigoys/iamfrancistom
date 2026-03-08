@@ -105,10 +105,10 @@ const Testimonials = () => {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 30, scale: 0.96 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
           className="text-center mb-16"
         >
           <span className="text-primary text-sm font-medium tracking-widest uppercase">What Clients Say</span>
@@ -119,10 +119,10 @@ const Testimonials = () => {
           {testimonials.map((t, i) => (
             <motion.div
               key={t.name}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5, delay: i * 0.15 }}
+              transition={{ duration: 0.7, delay: i * 0.15, ease: "easeOut" }}
               className="glass-card hover-lift p-8"
             >
               <Quote className="text-primary/30 mb-4" size={32} />
