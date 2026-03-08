@@ -175,7 +175,7 @@ const DetailedCard = ({ p, i, compact = false }: { p: Project; i: number; compac
             <img src={p.image} alt={p.title} decoding="sync" loading="eager" className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
           </div>
           <div className="p-5 flex flex-col flex-1">
-            <span className="text-xs text-muted-foreground/50 font-medium tracking-widest uppercase mb-1">{p.tag}</span>
+            <span className="text-xs text-muted-foreground font-medium tracking-widest uppercase mb-1">{p.tag}</span>
             <h3 className="font-heading text-lg font-bold mb-2">{p.title}</h3>
             <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-2">{p.desc}</p>
             {p.savings && (
