@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
+import NeuralNetworkBackground from "./NeuralNetworkBackground";
 
 const tools = [
   { name: "ChatGPT", logo: "/images/tools/chatgpt.svg" },
