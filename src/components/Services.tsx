@@ -54,8 +54,8 @@ const Services = () => {
               variants={cardVariants}
               className="glass-card p-8 group cursor-default transition-all duration-300 hover-blink"
             >
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors">
-                <s.icon className="text-primary" size={24} />
+              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors text-2xl">
+                {s.emoji}
               </div>
               <h3 className="font-heading text-lg font-semibold mb-2">{s.title}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">{s.desc}</p>
