@@ -21,8 +21,17 @@ const cardVariants = {
 
 const Services = () => {
   return (
-    <section id="services" className="section-padding bg-secondary/30">
-      <div className="max-w-7xl mx-auto">
+    <section id="services" className="section-padding bg-secondary/30 relative overflow-hidden">
+      {/* Dotted grid pattern */}
+      <div
+        className="absolute inset-0 opacity-[0.07] pointer-events-none"
+        style={{
+          backgroundImage: "radial-gradient(circle, #00ff00 1px, transparent 1px)",
+          backgroundSize: "30px 30px",
+        }}
+      />
+
+      <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
