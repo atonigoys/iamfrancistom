@@ -78,8 +78,6 @@ const projects: Project[] = [
     savings: { money: "$900/mo saved", time: "20 hrs/mo saved" },
     techStack: ["Make (Integromat)", "Gmail", "Google Drive", "Google Sheets", "AI Processing"],
   },
-  { title: "AI Customer Support Chatbot", desc: "An intelligent chatbot handling customer inquiries with natural language understanding.", category: "Make" },
-  { title: "Lead Generation Automation System", desc: "Automated pipeline that captures, qualifies, and nurtures leads across channels.", category: "Zapier" },
   {
     title: "AI Facebook Support Agent",
     desc: "Automated AI support agent that processes incoming webhook requests from Facebook, retrieves knowledge documents, generates intelligent responses using an AI model, and returns automated replies through API integration.",
@@ -125,9 +123,6 @@ const projects: Project[] = [
     savings: { money: "$1,400/mo saved", time: "32 hrs/mo saved" },
     techStack: ["n8n", "OpenRouter", "AI Video API", "YouTube API"],
   },
-  { title: "AI Agent for Customer Inquiries", desc: "Custom AI agent providing instant, accurate responses to customer questions.", category: "n8n" },
-  { title: "Automated CRM Workflow System", desc: "End-to-end CRM automation reducing manual data entry and follow-up tasks.", category: "GoHighLevel" },
-  { title: "Social Media Automation Pipeline", desc: "Multi-platform content scheduling and engagement automation system.", category: "Make" },
 ];
 
 const DetailedCard = ({ p, i }: { p: Project; i: number }) => {
