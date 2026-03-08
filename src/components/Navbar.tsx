@@ -46,9 +46,10 @@ const Navbar = () => {
           ))}
           <a
             href="#contact"
-            className="btn-glow text-sm px-5 py-2 rounded-lg bg-primary text-primary-foreground font-medium"
+            className="btn-glow text-sm px-5 py-2 rounded-lg bg-primary text-primary-foreground font-medium flex items-center gap-2"
           >
-            Get in Touch
+            <MessageCircle size={16} />
+            LET'S TALK
           </a>
         </div>
 
