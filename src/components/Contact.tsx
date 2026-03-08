@@ -25,10 +25,10 @@ const Contact = () => {
         >
           <span className="text-primary text-sm font-medium tracking-widest uppercase">Get in Touch</span>
           <h2 className="font-heading text-3xl md:text-4xl font-bold mt-3">
-            Let's Build Smart Automation for Your Business
+            Let's Work Together to Build Smarter AI Automation
           </h2>
           <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
-            Book a free 30-minute consultation to discuss how AI automation can streamline your operations.
+            Book a free 30-minute consultation to explore how AI-powered workflows can automate tasks, connect your tools, and streamline the way you work.
           </p>
         </motion.div>
 
