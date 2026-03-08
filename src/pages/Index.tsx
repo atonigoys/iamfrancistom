@@ -17,7 +17,7 @@ const NeonDivider = () => (
     <div className="absolute -top-[6px] -bottom-[6px] inset-x-0 bg-gradient-to-r from-transparent via-[#00ff88]/30 to-transparent blur-[16px] animate-pulse-glow" />
     {/* Scanning beam */}
     <div
-      className="absolute top-0 bottom-0 w-[120px] animate-[scan_4s_ease-in-out_infinite]"
+      className="absolute top-0 bottom-0 w-[120px] animate-scan"
       style={{
         background: "linear-gradient(90deg, transparent, #00ff88, transparent)",
         filter: "blur(2px)",
