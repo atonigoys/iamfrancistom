@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
+import NeuralNetworkBackground from "./NeuralNetworkBackground";
 
 const tools = [
   { name: "ChatGPT", logo: "/images/tools/chatgpt.svg" },
@@ -30,10 +31,10 @@ const tools = [
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center section-padding pt-28 overflow-hidden">
-      {/* Background grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
-      {/* Glow orb */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/5 blur-[120px] animate-pulse-glow" />
+      {/* Neural network background */}
+      <NeuralNetworkBackground />
+      {/* Subtle overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-background/80" />
 
       <div className="relative max-w-4xl mx-auto text-center flex-1 flex flex-col justify-center">
         <motion.div
