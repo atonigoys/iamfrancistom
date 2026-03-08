@@ -52,7 +52,6 @@ const Services = () => {
               whileInView="visible"
               viewport={{ once: true, margin: "-80px" }}
               variants={cardVariants}
-              whileHover={{ scale: 1.05, y: -8, transition: { type: "spring", stiffness: 400, damping: 15 } }}
               className="glass-card p-8 group cursor-default transition-all duration-300 hover-blink"
             >
               <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors text-2xl">
