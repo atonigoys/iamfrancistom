@@ -48,8 +48,7 @@ const Navbar = () => {
             href="#contact"
             className="btn-glow text-sm px-5 py-2 rounded-lg bg-primary text-primary-foreground font-medium flex items-center gap-2"
           >
-            <MessageCircle size={16} />
-            LET'S TALK
+            🚀 Book an Automation Call
           </a>
         </div>
 
