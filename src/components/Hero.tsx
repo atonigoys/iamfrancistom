@@ -123,7 +123,6 @@ const Hero = () => {
                 )}
                 <span className="text-sm text-muted-foreground whitespace-nowrap">{tool.name}</span>
               </div>
-              </div>
             ))}
           </div>
         </div>
