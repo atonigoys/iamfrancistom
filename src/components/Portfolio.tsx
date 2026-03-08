@@ -67,10 +67,10 @@ const DetailedCard = ({ p, i }: { p: Project; i: number }) => {
         transition={{ duration: 0.4, delay: i * 0.08 }}
         className="glass-card hover-lift group overflow-hidden cursor-pointer col-span-1 sm:col-span-2 lg:col-span-3"
       >
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 min-h-[400px]">
           {/* Image */}
           <div
-            className="relative h-64 lg:h-auto bg-secondary overflow-hidden cursor-zoom-in"
+            className="relative h-64 lg:h-full bg-secondary overflow-hidden cursor-zoom-in"
             onClick={() => setImageOpen(true)}
           >
             <img
