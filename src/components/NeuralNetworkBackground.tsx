@@ -38,7 +38,7 @@ const NeuralNetworkBackground = () => {
         vy: (Math.random() - 0.5) * 0.3,
         baseX: x,
         baseY: y,
-        radius: Math.random() * 1.5 + 1,
+        radius: Math.random() * 3 + 2.5,
         pulsePhase: Math.random() * Math.PI * 2,
         pulseSpeed: Math.random() * 0.02 + 0.01,
       });
