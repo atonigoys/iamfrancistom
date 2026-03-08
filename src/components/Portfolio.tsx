@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, DollarSign, Clock, X } from "lucide-react";
 import { createPortal } from "react-dom";
@@ -40,8 +40,9 @@ const projects: Project[] = [
   { title: "Social Media Automation Pipeline", desc: "Multi-platform content scheduling and engagement automation system.", category: "Make" },
 ];
 
-const DetailedCard = ({ p, i }: { p: Project; i: number }) => {
+const ProjectCard = ({ p, i }: { p: Project; i: number }) => {
   const [imageOpen, setImageOpen] = useState(false);
+  const isDetailed = !!p.image;
 
   return (
     <>
@@ -50,111 +51,110 @@ const DetailedCard = ({ p, i }: { p: Project; i: number }) => {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: i * 0.08 }}
-        className="glass-card hover-lift group overflow-hidden cursor-pointer col-span-1 sm:col-span-2 lg:col-span-3 h-[420px]"
-              src={p.image}
-              alt={p.title}
-              className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-            />
+        className={`glass-card hover-lift group overflow-hidden cursor-pointer ${
+          isDetailed ? "col-span-1 sm:col-span-2 lg:col-span-3" : ""
+        }`}
+      >
+        {isDetailed ? (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 h-[420px]">
+            <div
+              className="relative h-64 lg:h-full bg-secondary overflow-hidden cursor-zoom-in"
+              onClick={() => setImageOpen(true)}
+            >
+              <img
+                src={p.image}
+                alt={p.title}
+                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            <div className="p-6 md:p-8 flex flex-col justify-center overflow-y-auto">
+              <span className="text-xs text-muted-foreground font-medium tracking-widest uppercase mb-2">{p.tag}</span>
+              <h3 className="font-heading text-xl font-bold mb-3">{p.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed mb-5">{p.desc}</p>
+              {p.results && (
+                <div className="mb-5">
+                  <h4 className="text-sm font-semibold mb-2">Key Results</h4>
+                  <ul className="space-y-1.5">
+                    {p.results.map((r) => (
+                      <li key={r} className="text-muted-foreground text-sm flex items-start gap-2">
+                        <span className="text-primary mt-0.5">✔</span> {r}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {p.savings && (
+                <div className="flex gap-4 mb-5">
+                  <span className="flex items-center gap-1.5 text-sm font-medium bg-secondary/80 px-3 py-1.5 rounded-full border border-border/30">
+                    <DollarSign size={14} className="text-primary" /> {p.savings.money}
+                  </span>
+                  <span className="flex items-center gap-1.5 text-sm font-medium bg-secondary/80 px-3 py-1.5 rounded-full border border-border/30">
+                    <Clock size={14} className="text-primary" /> {p.savings.time}
+                  </span>
+                </div>
+              )}
+              {p.techStack && (
+                <div>
+                  <h4 className="text-sm font-semibold mb-2">Tech Stack</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {p.techStack.map((t) => (
+                      <span key={t} className="text-xs bg-secondary/80 text-muted-foreground px-3 py-1 rounded-full border border-border/30">{t}</span>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
-      {/* Content */}
-      <div className="p-6 md:p-8 flex flex-col justify-center">
-        <span className="text-xs text-muted-foreground font-medium tracking-widest uppercase mb-2">{p.tag}</span>
-        <h3 className="font-heading text-xl font-bold mb-3">{p.title}</h3>
-        <p className="text-muted-foreground text-sm leading-relaxed mb-5">{p.desc}</p>
-
-        {p.results && (
-          <div className="mb-5">
-            <h4 className="text-sm font-semibold mb-2">Key Results</h4>
-            <ul className="space-y-1.5">
-              {p.results.map((r) => (
-                <li key={r} className="text-muted-foreground text-sm flex items-start gap-2">
-                  <span className="text-primary mt-0.5">✔</span> {r}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {p.savings && (
-          <div className="flex gap-4 mb-5">
-            <span className="flex items-center gap-1.5 text-sm font-medium bg-secondary/80 px-3 py-1.5 rounded-full border border-border/30">
-              <DollarSign size={14} className="text-primary" /> {p.savings.money}
-            </span>
-            <span className="flex items-center gap-1.5 text-sm font-medium bg-secondary/80 px-3 py-1.5 rounded-full border border-border/30">
-              <Clock size={14} className="text-primary" /> {p.savings.time}
-            </span>
-          </div>
-        )}
-
-        {p.techStack && (
-          <div>
-            <h4 className="text-sm font-semibold mb-2">Tech Stack</h4>
-            <div className="flex flex-wrap gap-2">
-              {p.techStack.map((t) => (
-                <span key={t} className="text-xs bg-secondary/80 text-muted-foreground px-3 py-1 rounded-full border border-border/30">{t}</span>
-              ))}
+        ) : (
+          <div className="h-[320px] flex flex-col">
+            <div className="relative h-48 bg-gradient-to-br from-primary/10 to-secondary overflow-hidden flex-shrink-0">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+                  <ExternalLink className="text-primary/40" size={24} />
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <span className="text-primary font-medium text-sm flex items-center gap-2">
+                  View Project <ExternalLink size={16} />
+                </span>
+              </div>
+            </div>
+            <div className="p-6 flex-1">
+              <span className="text-xs text-primary font-medium mb-2 inline-block">{p.category}</span>
+              <h3 className="font-heading text-base font-semibold mb-2">{p.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">{p.desc}</p>
             </div>
           </div>
         )}
-      </div>
-    </div>
-  </motion.div>
+      </motion.div>
 
-  {imageOpen && createPortal(
-    <div className="fixed inset-0 z-50 flex items-center justify-center" onClick={() => setImageOpen(false)}>
-      <div className="absolute inset-0 bg-black/80" />
-      <div
-        className="relative z-10 max-w-5xl w-[95vw] p-2 bg-background border border-border rounded-lg"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <button
-          onClick={() => setImageOpen(false)}
-          className="absolute right-4 top-4 z-20 rounded-sm opacity-70 hover:opacity-100 transition-opacity"
-        >
-          <X className="h-4 w-4" />
-        </button>
-        <div className="overflow-auto max-h-[85vh] rounded-lg">
-          <img
-            src={p.image}
-            alt={p.title}
-            className="w-full h-auto rounded-lg"
-          />
-        </div>
-      </div>
-    </div>,
-    document.body
-  )}
-</>
-);
+      {isDetailed && imageOpen && createPortal(
+        <div className="fixed inset-0 z-50 flex items-center justify-center" onClick={() => setImageOpen(false)}>
+          <div className="absolute inset-0 bg-black/80" />
+          <div
+            className="relative z-10 max-w-5xl w-[95vw] p-2 bg-background border border-border rounded-lg"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setImageOpen(false)}
+              className="absolute right-4 top-4 z-20 rounded-sm opacity-70 hover:opacity-100 transition-opacity"
+            >
+              <X className="h-4 w-4" />
+            </button>
+            <div className="overflow-auto max-h-[85vh] rounded-lg">
+              <img
+                src={p.image}
+                alt={p.title}
+                className="w-full h-auto rounded-lg"
+              />
+            </div>
+          </div>
+        </div>,
+        document.body
+      )}
+    </>
+  );
 };
-
-const SimpleCard = ({ p, i }: { p: Project; i: number }) => (
-  <motion.div
-    key={p.title}
-    initial={{ opacity: 0, y: 40 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.4, delay: i * 0.08 }}
-    className="glass-card hover-lift group overflow-hidden cursor-pointer"
-  >
-    <div className="relative h-48 bg-gradient-to-br from-primary/10 to-secondary overflow-hidden">
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
-          <ExternalLink className="text-primary/40" size={24} />
-        </div>
-      </div>
-      <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-        <span className="text-primary font-medium text-sm flex items-center gap-2">
-          View Project <ExternalLink size={16} />
-        </span>
-      </div>
-    </div>
-    <div className="p-6">
-      <span className="text-xs text-primary font-medium mb-2 inline-block">{p.category}</span>
-      <h3 className="font-heading text-base font-semibold mb-2">{p.title}</h3>
-      <p className="text-muted-foreground text-sm leading-relaxed">{p.desc}</p>
-    </div>
-  </motion.div>
-);
 
 const Portfolio = () => {
   const [active, setActive] = useState<Category>("All");
@@ -202,9 +202,9 @@ const Portfolio = () => {
             transition={{ duration: 0.3 }}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            {filtered.map((p, i) =>
-              p.image ? <DetailedCard key={p.title} p={p} i={i} /> : <SimpleCard key={p.title} p={p} i={i} />
-            )}
+            {filtered.map((p, i) => (
+              <ProjectCard key={p.title} p={p} i={i} />
+            ))}
           </motion.div>
         </AnimatePresence>
       </div>
