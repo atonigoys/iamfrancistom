@@ -8,7 +8,11 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 const NeonDivider = () => (
-  <div className="w-full h-[5px] bg-gradient-to-r from-transparent via-primary to-transparent" />
+  <div className="relative w-full h-[1px]">
+    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#00ff88] to-transparent opacity-80" />
+    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#00ff88] to-transparent blur-[8px] animate-pulse-glow" />
+    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#00ff88] to-transparent blur-[20px] opacity-40 animate-pulse-glow" />
+  </div>
 );
 
 const Index = () => {
