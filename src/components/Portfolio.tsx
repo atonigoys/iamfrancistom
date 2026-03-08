@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, DollarSign, Clock, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { createPortal } from "react-dom";
 
-const categories = ["All", "Zapier", "Make", "n8n", "GoHighLevel"] as const;
+const categories = ["All", "Zapier", "Make", "n8n", "GoHighLevel", "Landing Page"] as const;
 type Category = (typeof categories)[number];
 
 interface Project {
