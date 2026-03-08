@@ -42,7 +42,7 @@ const projects: Project[] = [
 
 const DetailedCard = ({ p, i }: { p: Project; i: number }) => {
   const [imageOpen, setImageOpen] = useState(false);
-
+  const [zoom, setZoom] = useState(1);
   return (
     <>
       <motion.div
