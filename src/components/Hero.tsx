@@ -3,9 +3,12 @@ import { ArrowRight, ChevronDown } from "lucide-react";
 
 const tools = [
   { name: "ChatGPT", logo: "/images/tools/chatgpt.svg" },
+  { name: "OpenAI", logo: "/images/tools/openai.svg" },
   { name: "Zapier", logo: "/images/tools/zapier.svg" },
   { name: "n8n", logo: "/images/tools/n8n.svg" },
+  { name: "Make", logo: "/images/tools/make.svg" },
   { name: "Google AI Studio", logo: "/images/tools/google-ai-studio.svg" },
+  { name: "Google Gemini", logo: "/images/tools/google-gemini.svg" },
   { name: "Airtable", logo: "/images/tools/airtable.svg" },
   { name: "Lovable", logo: "/images/tools/lovable.png" },
   { name: "Google Docs", logo: "/images/tools/google-docs.svg" },
@@ -13,6 +16,15 @@ const tools = [
   { name: "Slack", logo: "/images/tools/slack.svg" },
   { name: "Asana", logo: "/images/tools/asana.svg" },
   { name: "Xero", logo: "/images/tools/xero.svg" },
+  { name: "Vercel", logo: "/images/tools/vercel.svg" },
+  { name: "GitHub", logo: "/images/tools/github.svg" },
+  { name: "GoHighLevel", logo: null },
+  { name: "OpenRouter", logo: null },
+  { name: "HubSpot", logo: "/images/tools/hubspot.svg" },
+  { name: "Vapi", logo: null },
+  { name: "Docker", logo: "/images/tools/docker.svg" },
+  { name: "Supabase", logo: "/images/tools/supabase.svg" },
+  { name: "Grok", logo: null },
 ];
 
 const Hero = () => {
