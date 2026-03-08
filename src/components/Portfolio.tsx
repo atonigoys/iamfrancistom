@@ -192,14 +192,14 @@ const DetailedCard = ({ p, i, compact = false }: { p: Project; i: number; compac
         </motion.div>
 
         {imageOpen && createPortal(
-          <div className="fixed inset-0 z-50 flex items-center justify-center" onClick={() => setImageOpen(false)}>
-            <div className="absolute inset-0 bg-black/80" />
-            <div className="relative z-10 max-w-5xl w-[95vw] bg-background border border-border rounded-lg overflow-hidden hover:shadow-[0_0_30px_-5px_rgba(0,255,0,0.4)] transition-shadow duration-300" onClick={(e) => e.stopPropagation()}>
-              <div className="flex items-center justify-between px-4 py-3 border-b border-border">
-                <h3 className="font-heading text-sm font-semibold">{p.title}</h3>
-                <button onClick={() => setImageOpen(false)} className="rounded-sm opacity-70 hover:opacity-100 transition-opacity"><X className="h-4 w-4" /></button>
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={() => setImageOpen(false)}>
+            <div className="absolute inset-0 bg-black/90" />
+            <div className="relative z-10 max-w-[95vw] max-h-[95vh] w-full bg-background border border-border rounded-lg overflow-hidden shadow-[0_0_40px_-5px_rgba(0,255,0,0.3)]" onClick={(e) => e.stopPropagation()}>
+              <div className="flex items-center justify-between px-5 py-3 border-b border-border">
+                <h3 className="font-heading text-base font-semibold">{p.title}</h3>
+                <button onClick={() => setImageOpen(false)} className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center opacity-70 hover:opacity-100 transition-opacity"><X className="h-5 w-5" /></button>
               </div>
-              <div className="overflow-auto max-h-[80vh] p-2 will-change-contents">
+              <div className="overflow-auto max-h-[calc(95vh-52px)] p-3 will-change-contents">
                 <img src={p.image} alt={p.title} decoding="sync" loading="eager" className="w-full h-auto rounded-lg" />
               </div>
             </div>
