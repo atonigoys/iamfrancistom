@@ -74,7 +74,7 @@
 
 /* Styles outside @layer to avoid PostCSS parsing issues */
 .hover-lift:hover {
-  box-shadow: 0 10px 40px -10px rgba(45, 212, 191, 0.15);
+  box-shadow: 0 10px 40px -10px rgba(255, 255, 255, 0.15);
 }
 
 .btn-glow:hover {
