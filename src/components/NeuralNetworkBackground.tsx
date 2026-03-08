@@ -147,7 +147,7 @@ const NeuralNetworkBackground = () => {
         // Core
         ctx.beginPath();
         ctx.arc(node.x, node.y, glowSize, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(0, 255, 0, ${coreAlpha})`;
+        ctx.fillStyle = `rgba(0, 255, 138, ${coreAlpha})`;
         ctx.fill();
       }
 

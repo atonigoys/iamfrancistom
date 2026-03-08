@@ -74,7 +74,7 @@ const FloatingParticles = () => {
 
         // Core
         ctx.beginPath();
-        ctx.fillStyle = `rgba(0, 255, 0, ${p.opacity})`;
+        ctx.fillStyle = `rgba(0, 255, 138, ${p.opacity})`;
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fill();
       });

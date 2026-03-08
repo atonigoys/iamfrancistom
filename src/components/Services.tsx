@@ -26,7 +26,7 @@ const Services = () => {
       <div
         className="absolute inset-0 opacity-[0.07] pointer-events-none"
         style={{
-          backgroundImage: "radial-gradient(circle, #00ff00 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(circle, #00FF8A 1px, transparent 1px)",
           backgroundSize: "30px 30px",
         }}
       />
