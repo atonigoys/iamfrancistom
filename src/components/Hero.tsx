@@ -53,9 +53,9 @@ const Hero = () => {
           transition={{ duration: 0.7, delay: 0.15 }}
           className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6"
         >
-          Building Smart{" "}
-          <span className="gradient-text">Automation Systems</span>{" "}
-          with AI
+          AI-Powered{" "}
+          <span className="gradient-text">Automation</span>{" "}
+          for Smarter Workflows
         </motion.h1>
 
         <motion.p
