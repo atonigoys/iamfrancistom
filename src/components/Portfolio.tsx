@@ -166,7 +166,7 @@ const DetailedCard = ({ p, i, compact = false }: { p: Project; i: number; compac
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: i * 0.08 }}
-          className="bg-transparent border border-border/30 rounded-xl hover-lift group overflow-hidden cursor-pointer flex flex-col"
+          className="bg-transparent border border-border/30 rounded-xl hover-blink group overflow-hidden cursor-pointer flex flex-col"
         >
           <div
             className="relative h-48 bg-secondary overflow-hidden cursor-zoom-in"
@@ -217,7 +217,7 @@ const DetailedCard = ({ p, i, compact = false }: { p: Project; i: number; compac
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: i * 0.08 }}
-        className="bg-transparent border border-border/30 rounded-xl hover-lift group overflow-hidden cursor-pointer col-span-1 sm:col-span-2 lg:col-span-3"
+        className="bg-transparent border border-border/30 rounded-xl hover-blink group overflow-hidden cursor-pointer col-span-1 sm:col-span-2 lg:col-span-3"
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 min-h-[400px]">
           {/* Image */}
@@ -316,7 +316,7 @@ const SimpleCard = ({ p, i }: { p: Project; i: number }) => (
     initial={{ opacity: 0, y: 40 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.4, delay: i * 0.08 }}
-    className="glass-card hover-lift group overflow-hidden cursor-pointer"
+    className="glass-card hover-blink group overflow-hidden cursor-pointer"
   >
     <div className="relative h-48 bg-gradient-to-br from-primary/10 to-secondary overflow-hidden">
       <div className="absolute inset-0 flex items-center justify-center">
