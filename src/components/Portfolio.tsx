@@ -108,14 +108,22 @@ const DetailedCard = ({ p, i }: { p: Project; i: number }) => {
     </div>
   </motion.div>
 
-  <Dialog open={imageOpen} onOpenChange={(open) => { setImageOpen(open); if (!open) setZoom(1); }}>
+  <Dialog open={imageOpen} onOpenChange={(open) => { setImageOpen(open); if (!open) { setZoom(1); setPosition({ x: 0, y: 0 }); } }}>
     <DialogContent className="max-w-5xl w-[95vw] p-2 bg-background border-border">
-      <div className="relative overflow-auto max-h-[85vh] rounded-lg">
+      <div
+        className="relative overflow-hidden max-h-[85vh] rounded-lg"
+        style={{ cursor: zoom > 1 ? (isDragging ? 'grabbing' : 'grab') : 'default' }}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}
+      >
         <img
           src={p.image}
           alt={p.title}
-          className="w-full h-auto rounded-lg transition-transform duration-300 origin-top-left"
-          style={{ transform: `scale(${zoom})` }}
+          className="w-full h-auto rounded-lg transition-transform duration-200 select-none"
+          draggable={false}
+          style={{ transform: `scale(${zoom}) translate(${position.x / zoom}px, ${position.y / zoom}px)`, transformOrigin: 'center center' }}
         />
       </div>
       <div className="flex items-center justify-center gap-3 pt-2">
