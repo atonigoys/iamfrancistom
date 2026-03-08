@@ -6,27 +6,24 @@ import Portfolio from "@/components/Portfolio";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-
-const NeonDivider = () => (
-  <div className="w-full h-[5px] bg-gradient-to-r from-transparent via-primary to-transparent" />
-);
+import CircuitDivider from "@/components/CircuitDivider";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
       <Hero />
-      <NeonDivider />
+      <CircuitDivider />
       <Services />
-      <NeonDivider />
+      <CircuitDivider />
       <Experience />
-      <NeonDivider />
+      <CircuitDivider />
       <Portfolio />
-      <NeonDivider />
+      <CircuitDivider />
       <Testimonials />
-      <NeonDivider />
+      <CircuitDivider />
       <Contact />
-      <NeonDivider />
+      <CircuitDivider />
       <Footer />
     </div>
   );
