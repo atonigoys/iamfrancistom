@@ -125,7 +125,7 @@ const projects: Project[] = [
   },
 ];
 
-const DetailedCard = ({ p, i }: { p: Project; i: number }) => {
+const DetailedCard = ({ p, i, compact = false }: { p: Project; i: number; compact?: boolean }) => {
   const [imageOpen, setImageOpen] = useState(false);
 
   return (
