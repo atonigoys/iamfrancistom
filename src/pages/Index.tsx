@@ -6,10 +6,7 @@ import Portfolio from "@/components/Portfolio";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-
-const NeonDivider = () => (
-  <div className="w-full h-[5px] bg-gradient-to-r from-transparent via-primary to-transparent" />
-);
+import CircuitDivider from "@/components/CircuitDivider";
 
 const Index = () => {
   return (
