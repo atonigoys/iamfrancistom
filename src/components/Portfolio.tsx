@@ -78,8 +78,6 @@ const projects: Project[] = [
     savings: { money: "$900/mo saved", time: "20 hrs/mo saved" },
     techStack: ["Make (Integromat)", "Gmail", "Google Drive", "Google Sheets", "AI Processing"],
   },
-  { title: "AI Customer Support Chatbot", desc: "An intelligent chatbot handling customer inquiries with natural language understanding.", category: "Make" },
-  { title: "Lead Generation Automation System", desc: "Automated pipeline that captures, qualifies, and nurtures leads across channels.", category: "Zapier" },
   {
     title: "AI Facebook Support Agent",
     desc: "Automated AI support agent that processes incoming webhook requests from Facebook, retrieves knowledge documents, generates intelligent responses using an AI model, and returns automated replies through API integration.",
