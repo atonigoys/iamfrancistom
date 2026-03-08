@@ -398,7 +398,7 @@ const Portfolio = () => {
         >
           <span className="text-primary text-sm font-medium tracking-widest uppercase">Portfolio</span>
           <h2 className="font-heading text-3xl md:text-4xl font-bold mt-3">Previous Works</h2>
-          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">Selected automation projects demonstrating how intelligent workflows can transform complex processes into seamless systems.</p>
+          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">AI-powered workflows and integrations designed to connect tools, automate processes, and improve productivity.</p>
         </motion.div>
 
         {/* Tabs */}
