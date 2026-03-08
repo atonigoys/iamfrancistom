@@ -8,7 +8,7 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 const NeonDivider = () => (
-  <div className="relative w-full h-[1px] overflow-hidden">
+  <div className="relative w-full h-[3px] overflow-hidden">
     {/* Base line */}
     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#00ff88]/60 to-transparent" />
     {/* Soft glow */}
