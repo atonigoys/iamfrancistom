@@ -316,7 +316,7 @@ const SimpleCard = ({ p, i }: { p: Project; i: number }) => (
     initial={{ opacity: 0, y: 40 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.4, delay: i * 0.08 }}
-    className="glass-card hover-lift group overflow-hidden cursor-pointer"
+    className="glass-card hover-blink group overflow-hidden cursor-pointer"
   >
     <div className="relative h-48 bg-gradient-to-br from-primary/10 to-secondary overflow-hidden">
       <div className="absolute inset-0 flex items-center justify-center">
