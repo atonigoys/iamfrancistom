@@ -256,8 +256,11 @@ const SimpleCard = ({ p, i }: { p: Project; i: number }) => (
   </motion.div>
 );
 
+const ITEMS_PER_PAGE = 2;
+
 const Portfolio = () => {
   const [active, setActive] = useState<Category>("All");
+  const [page, setPage] = useState(0);
 
   // Preload all portfolio images on mount
   useEffect(() => {
@@ -269,7 +272,12 @@ const Portfolio = () => {
     });
   }, []);
 
-  const filtered = active === "All" ? projects.slice(0, 4) : projects.filter((p) => p.category === active);
+  const allFiltered = active === "All" ? projects : projects.filter((p) => p.category === active);
+  const totalPages = Math.ceil(allFiltered.length / ITEMS_PER_PAGE);
+  const filtered = allFiltered.slice(page * ITEMS_PER_PAGE, (page + 1) * ITEMS_PER_PAGE);
+
+  // Reset page when tab changes
+  useEffect(() => { setPage(0); }, [active]);
 
   return (
     <section id="portfolio" className="section-padding bg-secondary/30">
@@ -305,7 +313,7 @@ const Portfolio = () => {
 
         <AnimatePresence mode="wait">
           <motion.div
-            key={active}
+            key={`${active}-${page}`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -313,10 +321,41 @@ const Portfolio = () => {
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {filtered.map((p, i) =>
-              p.image ? <DetailedCard key={p.title} p={p} i={i} /> : <SimpleCard key={p.title} p={p} i={i} />
+              p.image ? <DetailedCard key={p.title} p={p} i={i} /> : null
             )}
           </motion.div>
         </AnimatePresence>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="flex items-center justify-center gap-4 mt-10">
+            <button
+              onClick={() => setPage((p) => Math.max(0, p - 1))}
+              disabled={page === 0}
+              className="w-10 h-10 rounded-full bg-secondary/80 flex items-center justify-center border border-border/30 hover:border-primary/50 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+            >
+              <ChevronLeft size={18} />
+            </button>
+            <div className="flex gap-2">
+              {Array.from({ length: totalPages }).map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setPage(i)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    i === page ? "bg-primary scale-125" : "bg-muted-foreground/40 hover:bg-muted-foreground/70"
+                  }`}
+                />
+              ))}
+            </div>
+            <button
+              onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
+              disabled={page === totalPages - 1}
+              className="w-10 h-10 rounded-full bg-secondary/80 flex items-center justify-center border border-border/30 hover:border-primary/50 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+            >
+              <ChevronRight size={18} />
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
