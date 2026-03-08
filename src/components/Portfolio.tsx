@@ -138,6 +138,21 @@ const projects: Project[] = [
     savings: { money: "$1,000/mo saved", time: "20 hrs/mo saved" },
     techStack: ["Antigravity", "Responsive UI/UX", "Website Builder", "Modern Landing Page Design"],
   },
+  {
+    title: "Curbside Café Website",
+    desc: "Modern café website built using Lovable, designed to showcase handcrafted coffee, highlight the brand identity, and provide a smooth customer experience with easy menu browsing and online ordering.",
+    category: "Landing Page",
+    tag: "WEB DEVELOPMENT • LOVABLE",
+    image: "/images/portfolio/curbside-cafe-website.png",
+    results: [
+      "Modern landing page design tailored for a café brand",
+      "Clear call-to-action for ordering and customer engagement",
+      "Fully responsive layout for mobile and desktop users",
+      "Improved online presence and customer accessibility",
+    ],
+    savings: { money: "$900/mo saved", time: "18 hrs/mo saved" },
+    techStack: ["Lovable", "Responsive UI/UX", "Landing Page Design", "Website Builder"],
+  },
 ];
 
 const DetailedCard = ({ p, i, compact = false }: { p: Project; i: number; compact?: boolean }) => {
