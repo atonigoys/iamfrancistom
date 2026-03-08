@@ -173,6 +173,7 @@ const DetailedCard = ({ p, i, compact = false }: { p: Project; i: number; compac
             onClick={(e) => { e.stopPropagation(); setImageOpen(true); }}
           >
             <img src={p.image} alt={p.title} decoding="sync" loading="eager" className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
+            <div className="absolute inset-0 bg-muted/60 group-hover:bg-transparent transition-colors duration-500" />
           </div>
           <div className="p-5 flex flex-col flex-1">
             <span className="text-xs text-muted-foreground font-medium tracking-widest uppercase mb-1">{p.tag}</span>
