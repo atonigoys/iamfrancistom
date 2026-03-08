@@ -42,7 +42,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          <span className="inline-block mb-6 px-4 py-1.5 rounded-full border border-primary/30 text-primary text-sm font-medium tracking-wide">
+          <span className="inline-block mb-6 px-4 py-1.5 rounded-full border border-primary/50 text-primary text-sm font-medium tracking-wide bg-primary/10 shadow-[0_0_15px_rgba(0,255,0,0.3),0_0_30px_rgba(0,255,0,0.15)]">
             AI Automation Specialist
           </span>
         </motion.div>
