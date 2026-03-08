@@ -3,8 +3,19 @@ import { Mail, MessageCircle, Twitter, Linkedin, Github } from "lucide-react";
 
 const Contact = () => {
   return (
-    <section id="contact" className="section-padding bg-secondary/30">
-      <div className="max-w-3xl mx-auto">
+    <section id="contact" className="section-padding relative overflow-hidden bg-background">
+      {/* Grid background */}
+      <div
+        className="absolute inset-0 opacity-[0.04]"
+        style={{
+          backgroundImage: "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
+          backgroundSize: "60px 60px",
+        }}
+      />
+      {/* Green gradient glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] pointer-events-none" />
+
+      <div className="max-w-3xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
