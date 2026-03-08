@@ -122,7 +122,7 @@ const NeuralNetworkBackground = () => {
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = `rgba(0, 255, 0, ${alpha})`;
+            ctx.strokeStyle = `rgba(0, 255, 138, ${alpha})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
