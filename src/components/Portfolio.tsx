@@ -246,7 +246,7 @@ const DetailedCard = ({ p, i, compact = false }: { p: Project; i: number; compac
             <h4 className="text-sm font-semibold mb-2">Key Results</h4>
             <ul className="space-y-1.5">
               {p.results.map((r) => (
-                <li key={r} className="text-muted-foreground text-sm flex items-start gap-2">
+                <li key={r} className="text-foreground/70 text-sm flex items-start gap-2">
                   <span className="text-primary mt-0.5">✔</span> {r}
                 </li>
               ))}
