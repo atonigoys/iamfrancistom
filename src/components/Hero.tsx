@@ -34,7 +34,7 @@ const Hero = () => {
       {/* Neural network background */}
       <NeuralNetworkBackground />
       {/* Subtle overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-background/80" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/80" />
 
       <div className="relative max-w-4xl mx-auto text-center flex-1 flex flex-col justify-center">
         <motion.div
@@ -51,7 +51,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15 }}
-          className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6"
+          className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 text-foreground drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
         >
           AI-Powered{" "}
           <span className="gradient-text">Automation</span>{" "}
@@ -62,7 +62,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
+          className="text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto mb-10 drop-shadow-[0_1px_6px_rgba(0,0,0,0.4)]"
         >
           I design intelligent workflows that connect apps, automate tasks, and
           streamline business operations.
