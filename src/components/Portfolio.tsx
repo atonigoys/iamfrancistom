@@ -40,23 +40,30 @@ const projects: Project[] = [
   { title: "Social Media Automation Pipeline", desc: "Multi-platform content scheduling and engagement automation system.", category: "Make" },
 ];
 
-const DetailedCard = ({ p, i }: { p: Project; i: number }) => (
-  <motion.div
-    key={p.title}
-    initial={{ opacity: 0, y: 40 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.4, delay: i * 0.08 }}
-    className="glass-card hover-lift group overflow-hidden cursor-pointer col-span-1 sm:col-span-2 lg:col-span-3"
-  >
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-      {/* Image */}
-      <div className="relative h-64 lg:h-auto bg-secondary overflow-hidden">
-        <img
-          src={p.image}
-          alt={p.title}
-          className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-        />
-      </div>
+const DetailedCard = ({ p, i }: { p: Project; i: number }) => {
+  const [imageOpen, setImageOpen] = useState(false);
+
+  return (
+    <>
+      <motion.div
+        key={p.title}
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, delay: i * 0.08 }}
+        className="glass-card hover-lift group overflow-hidden cursor-pointer col-span-1 sm:col-span-2 lg:col-span-3"
+      >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+          {/* Image */}
+          <div
+            className="relative h-64 lg:h-auto bg-secondary overflow-hidden cursor-zoom-in"
+            onClick={() => setImageOpen(true)}
+          >
+            <img
+              src={p.image}
+              alt={p.title}
+              className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
       {/* Content */}
       <div className="p-6 md:p-8 flex flex-col justify-center">
         <span className="text-xs text-muted-foreground font-medium tracking-widest uppercase mb-2">{p.tag}</span>
