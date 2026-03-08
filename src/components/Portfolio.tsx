@@ -123,6 +123,21 @@ const projects: Project[] = [
     savings: { money: "$1,400/mo saved", time: "32 hrs/mo saved" },
     techStack: ["n8n", "OpenRouter", "AI Video API", "YouTube API"],
   },
+  {
+    title: "DRIPTEA Milk Tea Website",
+    desc: "Modern responsive website designed for a milk tea brand, featuring a visually engaging landing page, interactive menu section, and optimized user experience to showcase products and drive customer orders.",
+    category: "Landing Page",
+    tag: "WEB DEVELOPMENT • Antigravity",
+    image: "/images/portfolio/driptea-website.png",
+    results: [
+      "Modern and responsive landing page design",
+      "Interactive menu browsing for customers",
+      "Optimized layout for mobile and desktop devices",
+      "Improved brand presence and online visibility",
+    ],
+    savings: { money: "$1,000/mo saved", time: "20 hrs/mo saved" },
+    techStack: ["Antigravity", "Responsive UI/UX", "Website Builder", "Modern Landing Page Design"],
+  },
 ];
 
 const DetailedCard = ({ p, i, compact = false }: { p: Project; i: number; compact?: boolean }) => {
