@@ -3,9 +3,12 @@ import { ArrowRight, ChevronDown } from "lucide-react";
 
 const tools = [
   { name: "ChatGPT", logo: "/images/tools/chatgpt.svg" },
+  { name: "OpenAI", logo: "/images/tools/openai.svg" },
   { name: "Zapier", logo: "/images/tools/zapier.svg" },
   { name: "n8n", logo: "/images/tools/n8n.svg" },
+  { name: "Make", logo: "/images/tools/make.svg" },
   { name: "Google AI Studio", logo: "/images/tools/google-ai-studio.svg" },
+  { name: "Google Gemini", logo: "/images/tools/google-gemini.svg" },
   { name: "Airtable", logo: "/images/tools/airtable.svg" },
   { name: "Lovable", logo: "/images/tools/lovable.png" },
   { name: "Google Docs", logo: "/images/tools/google-docs.svg" },
@@ -13,6 +16,15 @@ const tools = [
   { name: "Slack", logo: "/images/tools/slack.svg" },
   { name: "Asana", logo: "/images/tools/asana.svg" },
   { name: "Xero", logo: "/images/tools/xero.svg" },
+  { name: "Vercel", logo: "/images/tools/vercel.svg" },
+  { name: "GitHub", logo: "/images/tools/github.svg" },
+  { name: "GoHighLevel", logo: null },
+  { name: "OpenRouter", logo: null },
+  { name: "HubSpot", logo: "/images/tools/hubspot.svg" },
+  { name: "Vapi", logo: null },
+  { name: "Docker", logo: "/images/tools/docker.svg" },
+  { name: "Supabase", logo: "/images/tools/supabase.svg" },
+  { name: "Grok", logo: null },
 ];
 
 const Hero = () => {
@@ -96,13 +108,19 @@ const Hero = () => {
             {[...tools, ...tools].map((tool, i) => (
               <div
                 key={`${tool.name}-${i}`}
-                className="flex items-center gap-2.5 mx-6 px-4 py-2.5 rounded-lg bg-secondary/60 border border-border/30 hover:border-primary/30 transition-colors shrink-0"
+                className="flex items-center gap-2.5 mx-4 px-4 py-2.5 rounded-lg bg-secondary/60 border border-border/30 hover:border-primary/30 transition-colors shrink-0"
               >
-                <img
-                  src={tool.logo}
-                  alt={tool.name}
-                  className="w-5 h-5 brightness-0 invert opacity-70"
-                />
+                {tool.logo ? (
+                  <img
+                    src={tool.logo}
+                    alt={tool.name}
+                    className="w-5 h-5 brightness-0 invert opacity-70"
+                  />
+                ) : (
+                  <span className="w-5 h-5 rounded bg-primary/20 flex items-center justify-center text-[10px] font-bold text-primary">
+                    {tool.name.charAt(0)}
+                  </span>
+                )}
                 <span className="text-sm text-muted-foreground whitespace-nowrap">{tool.name}</span>
               </div>
             ))}
