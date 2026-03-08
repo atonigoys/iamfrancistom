@@ -74,11 +74,15 @@
   }
 
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-[hsl(200,80%,60%)];
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(to right, hsl(168, 80%, 50%), hsl(200, 80%, 60%));
   }
 
   .hover-lift {
-    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_hsl(168,80%,50%,0.15)];
+    @apply transition-all duration-300 hover:-translate-y-1;
+    &:hover {
+      box-shadow: 0 10px 40px -10px hsla(168, 80%, 50%, 0.15);
+    }
   }
 
   .section-padding {
