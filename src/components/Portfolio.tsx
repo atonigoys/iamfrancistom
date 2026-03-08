@@ -182,6 +182,16 @@ const SimpleCard = ({ p, i }: { p: Project; i: number }) => (
 const Portfolio = () => {
   const [active, setActive] = useState<Category>("All");
 
+  // Preload all portfolio images on mount
+  useEffect(() => {
+    projects.forEach((p) => {
+      if (p.image) {
+        const img = new Image();
+        img.src = p.image;
+      }
+    });
+  }, []);
+
   const filtered = active === "All" ? projects : projects.filter((p) => p.category === active);
 
   return (
