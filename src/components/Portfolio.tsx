@@ -273,9 +273,11 @@ const Portfolio = () => {
     });
   }, []);
 
-  const allFiltered = active === "All" ? projects : projects.filter((p) => p.category === active);
-  const totalPages = Math.ceil(allFiltered.length / ITEMS_PER_PAGE);
-  const filtered = allFiltered.slice(page * ITEMS_PER_PAGE, (page + 1) * ITEMS_PER_PAGE);
+  const isAll = active === "All";
+  const itemsPerPage = isAll ? ITEMS_PER_PAGE_ALL : ITEMS_PER_PAGE_OTHER;
+  const allFiltered = isAll ? projects : projects.filter((p) => p.category === active);
+  const totalPages = Math.ceil(allFiltered.length / itemsPerPage);
+  const filtered = allFiltered.slice(page * itemsPerPage, (page + 1) * itemsPerPage);
 
   // Reset page when tab changes
   useEffect(() => { setPage(0); }, [active]);
