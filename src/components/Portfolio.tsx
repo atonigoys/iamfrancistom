@@ -157,16 +157,19 @@ const DetailedCard = ({ p, i }: { p: Project; i: number }) => {
     <div className="fixed inset-0 z-50 flex items-center justify-center" onClick={() => setImageOpen(false)}>
       <div className="absolute inset-0 bg-black/80" />
       <div
-        className="relative z-10 max-w-5xl w-[95vw] p-2 bg-background border border-border rounded-lg"
+        className="relative z-10 max-w-5xl w-[95vw] bg-background border border-border rounded-lg overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        <button
-          onClick={() => setImageOpen(false)}
-          className="absolute right-4 top-4 z-20 rounded-sm opacity-70 hover:opacity-100 transition-opacity"
-        >
-          <X className="h-4 w-4" />
-        </button>
-        <div className="overflow-auto max-h-[85vh] rounded-lg will-change-contents">
+        <div className="flex items-center justify-between px-4 py-3 border-b border-border">
+          <h3 className="font-heading text-sm font-semibold">{p.title}</h3>
+          <button
+            onClick={() => setImageOpen(false)}
+            className="rounded-sm opacity-70 hover:opacity-100 transition-opacity"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        </div>
+        <div className="overflow-auto max-h-[80vh] p-2 will-change-contents">
           <img
             src={p.image}
             alt={p.title}
