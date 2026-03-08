@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, DollarSign, Clock } from "lucide-react";
+import { ExternalLink, DollarSign, Clock, X } from "lucide-react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 const categories = ["All", "Zapier", "Make", "n8n", "GoHighLevel"] as const;
 type Category = (typeof categories)[number];
