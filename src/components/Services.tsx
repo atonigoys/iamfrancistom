@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
-import { Bot, Plug, MessageSquare, BarChart3, Brain, Lightbulb } from "lucide-react";
+import { Bot, Plug, MessageSquare, Settings, Brain, Rocket } from "lucide-react";
 
 const services = [
-  { icon: Bot, title: "AI Workflow Automation", desc: "End-to-end AI-powered workflows that eliminate repetitive tasks and boost productivity." },
-  { icon: Plug, title: "API & App Integrations", desc: "Seamless connections between your favourite tools, platforms, and data sources." },
-  { icon: MessageSquare, title: "AI Chatbot Development", desc: "Intelligent conversational agents that handle customer support and inquiries 24/7." },
-  { icon: BarChart3, title: "CRM & Business Process Automation", desc: "Streamlined CRM pipelines and business processes for maximum efficiency." },
-  { icon: Brain, title: "Custom AI Agents", desc: "Bespoke AI agents tailored to your specific business needs and goals." },
-  { icon: Lightbulb, title: "Automation Consulting", desc: "Strategic consulting to identify and implement the highest-impact automation opportunities." },
+  { icon: Bot, emoji: "🤖", title: "AI Workflow Automation", desc: "Design and implement end-to-end AI workflows that automate repetitive tasks, connect business systems, and streamline operations to increase productivity and efficiency." },
+  { icon: Plug, emoji: "🔌", title: "API & System Integrations", desc: "Connect your tools, platforms, and data sources through custom API integrations to create seamless automated processes across your business ecosystem." },
+  { icon: MessageSquare, emoji: "💬", title: "AI Chatbot Development", desc: "Build intelligent AI chatbots and assistants that handle customer inquiries, support requests, lead qualification, and automated conversations 24/7." },
+  { icon: Settings, emoji: "⚙️", title: "CRM & Lead Automation", desc: "Automate CRM pipelines, lead capture, follow-ups, and sales processes to ensure no opportunity is missed and your sales workflow runs efficiently." },
+  { icon: Brain, emoji: "🧠", title: "Custom AI Agents", desc: "Develop tailored AI agents that perform complex tasks such as data processing, content generation, decision support, and workflow management." },
+  { icon: Rocket, emoji: "🚀", title: "Automation Strategy & Consulting", desc: "Identify high-impact automation opportunities and design AI solutions that reduce manual work, increase efficiency, and scale business operations." },
 ];
 
 const cardVariants = {
@@ -54,8 +54,8 @@ const Services = () => {
               variants={cardVariants}
               className="glass-card p-8 group cursor-default transition-all duration-300 hover-blink"
             >
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors">
-                <s.icon className="text-primary" size={24} />
+              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors text-2xl">
+                {s.emoji}
               </div>
               <h3 className="font-heading text-lg font-semibold mb-2">{s.title}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">{s.desc}</p>
