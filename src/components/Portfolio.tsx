@@ -166,7 +166,7 @@ const DetailedCard = ({ p, i, compact = false }: { p: Project; i: number; compac
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: i * 0.08 }}
-          className="glass-card hover-lift group overflow-hidden cursor-pointer flex flex-col"
+          className="bg-transparent border border-border/30 rounded-xl hover-lift group overflow-hidden cursor-pointer flex flex-col"
         >
           <div
             className="relative h-48 bg-secondary overflow-hidden cursor-zoom-in"
