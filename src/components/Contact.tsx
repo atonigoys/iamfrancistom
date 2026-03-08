@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, MessageCircle } from "lucide-react";
+import { Mail, MessageCircle, Twitter, Linkedin, Github } from "lucide-react";
 
 const Contact = () => {
   return (
@@ -61,6 +61,29 @@ const Contact = () => {
             <MessageCircle size={18} className="text-primary" />
             <span className="text-sm text-muted-foreground">+639 541 551 360</span>
           </a>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="flex items-center justify-center gap-5 mt-8"
+        >
+          {[
+            { icon: Twitter, href: "#" },
+            { icon: Linkedin, href: "#" },
+            { icon: Github, href: "#" },
+            { icon: Mail, href: "mailto:sayfrancistom@gmail.com" },
+          ].map(({ icon: Icon, href }, i) => (
+            <a
+              key={i}
+              href={href}
+              className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-200"
+            >
+              <Icon size={18} />
+            </a>
+          ))}
         </motion.div>
       </div>
     </section>
