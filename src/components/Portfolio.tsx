@@ -128,6 +128,58 @@ const projects: Project[] = [
 const DetailedCard = ({ p, i, compact = false }: { p: Project; i: number; compact?: boolean }) => {
   const [imageOpen, setImageOpen] = useState(false);
 
+  if (compact) {
+    return (
+      <>
+        <motion.div
+          key={p.title}
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: i * 0.08 }}
+          className="glass-card hover-lift group overflow-hidden cursor-pointer flex flex-col"
+        >
+          <div
+            className="relative h-48 bg-secondary overflow-hidden cursor-zoom-in"
+            onClick={(e) => { e.stopPropagation(); setImageOpen(true); }}
+          >
+            <img src={p.image} alt={p.title} decoding="sync" loading="eager" className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div className="p-5 flex flex-col flex-1">
+            <span className="text-xs text-muted-foreground font-medium tracking-widest uppercase mb-1">{p.tag}</span>
+            <h3 className="font-heading text-lg font-bold mb-2">{p.title}</h3>
+            <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-2">{p.desc}</p>
+            {p.savings && (
+              <div className="flex gap-3 mt-auto">
+                <span className="flex items-center gap-1.5 text-xs font-medium bg-secondary/80 px-2.5 py-1 rounded-full border border-border/30">
+                  <DollarSign size={12} className="text-primary" /> {p.savings.money}
+                </span>
+                <span className="flex items-center gap-1.5 text-xs font-medium bg-secondary/80 px-2.5 py-1 rounded-full border border-border/30">
+                  <Clock size={12} className="text-primary" /> {p.savings.time}
+                </span>
+              </div>
+            )}
+          </div>
+        </motion.div>
+
+        {imageOpen && createPortal(
+          <div className="fixed inset-0 z-50 flex items-center justify-center" onClick={() => setImageOpen(false)}>
+            <div className="absolute inset-0 bg-black/80" />
+            <div className="relative z-10 max-w-5xl w-[95vw] bg-background border border-border rounded-lg overflow-hidden hover:shadow-[0_0_30px_-5px_rgba(0,255,0,0.4)] transition-shadow duration-300" onClick={(e) => e.stopPropagation()}>
+              <div className="flex items-center justify-between px-4 py-3 border-b border-border">
+                <h3 className="font-heading text-sm font-semibold">{p.title}</h3>
+                <button onClick={() => setImageOpen(false)} className="rounded-sm opacity-70 hover:opacity-100 transition-opacity"><X className="h-4 w-4" /></button>
+              </div>
+              <div className="overflow-auto max-h-[80vh] p-2 will-change-contents">
+                <img src={p.image} alt={p.title} decoding="sync" loading="eager" className="w-full h-auto rounded-lg" />
+              </div>
+            </div>
+          </div>,
+          document.body
+        )}
+      </>
+    );
+  }
+
   return (
     <>
       <motion.div
