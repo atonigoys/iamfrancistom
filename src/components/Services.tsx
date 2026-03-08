@@ -52,7 +52,7 @@ const Services = () => {
               whileInView="visible"
               viewport={{ once: true, margin: "-80px" }}
               variants={cardVariants}
-              className="glass-card hover-lift p-8 group cursor-default"
+              className="glass-card hover-lift p-8 group cursor-default hover:shadow-[0_0_25px_-5px_rgba(0,255,0,0.25)] transition-shadow duration-300"
             >
               <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors">
                 <s.icon className="text-primary" size={24} />
