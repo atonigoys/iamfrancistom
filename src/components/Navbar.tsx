@@ -31,7 +31,7 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
         <a href="#" className="font-heading text-xl font-bold tracking-tight text-foreground">
-          FRANCIS<span className="text-primary">.TECH</span>
+          FRANCIS <span className="text-primary">TOM SAY</span>
         </a>
 
         {/* Desktop */}
