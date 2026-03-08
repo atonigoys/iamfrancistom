@@ -233,6 +233,7 @@ const DetailedCard = ({ p, i, compact = false }: { p: Project; i: number; compac
               loading="eager"
               className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
             />
+            <div className="absolute inset-0 bg-muted/60 group-hover:bg-transparent transition-colors duration-500" />
           </div>
       {/* Content */}
       <div className="p-6 md:p-8 flex flex-col justify-center">
