@@ -6,15 +6,9 @@ import Portfolio from "@/components/Portfolio";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import CircuitDivider from "@/components/CircuitDivider";
-import GlowingLine from "@/components/GlowingLine";
 
-const SectionSeparator = () => (
-  <div>
-    <GlowingLine />
-    <CircuitDivider />
-    <GlowingLine />
-  </div>
+const NeonDivider = () => (
+  <div className="w-full h-[5px] bg-gradient-to-r from-transparent via-primary to-transparent" />
 );
 
 const Index = () => {
@@ -22,17 +16,17 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <Hero />
-      <SectionSeparator />
+      <NeonDivider />
       <Services />
-      <SectionSeparator />
+      <NeonDivider />
       <Experience />
-      <SectionSeparator />
+      <NeonDivider />
       <Portfolio />
-      <SectionSeparator />
+      <NeonDivider />
       <Testimonials />
-      <SectionSeparator />
+      <NeonDivider />
       <Contact />
-      <SectionSeparator />
+      <NeonDivider />
       <Footer />
     </div>
   );
