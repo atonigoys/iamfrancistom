@@ -136,7 +136,7 @@ const DetailedCard = ({ p, i }: { p: Project; i: number }) => {
         <img
           src={p.image}
           alt={p.title}
-          className="w-full h-auto rounded-lg transition-transform duration-200 select-none"
+          className={`w-full h-auto rounded-lg select-none ${isDragging ? '' : 'transition-transform duration-200'}`}
           draggable={false}
           style={{ transform: `scale(${zoom}) translate(${position.x / zoom}px, ${position.y / zoom}px)`, transformOrigin: 'center center' }}
         />
