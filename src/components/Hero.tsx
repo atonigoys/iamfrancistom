@@ -18,13 +18,13 @@ const tools = [
   { name: "Xero", logo: "/images/tools/xero.svg" },
   { name: "Vercel", logo: "/images/tools/vercel.svg" },
   { name: "GitHub", logo: "/images/tools/github.svg" },
-  { name: "GoHighLevel", logo: null },
-  { name: "OpenRouter", logo: null },
+  { name: "GoHighLevel", logo: "/images/tools/gohighlevel.png" },
+  { name: "OpenRouter", logo: "/images/tools/openrouter.png" },
   { name: "HubSpot", logo: "/images/tools/hubspot.svg" },
-  { name: "Vapi", logo: null },
+  { name: "Vapi", logo: "/images/tools/vapi.png" },
   { name: "Docker", logo: "/images/tools/docker.svg" },
   { name: "Supabase", logo: "/images/tools/supabase.svg" },
-  { name: "Grok", logo: null },
+  { name: "Grok", logo: "/images/tools/grok.png" },
 ];
 
 const Hero = () => {
