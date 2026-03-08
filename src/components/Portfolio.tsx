@@ -107,7 +107,19 @@ const DetailedCard = ({ p, i }: { p: Project; i: number }) => {
       </div>
     </div>
   </motion.div>
+
+  <Dialog open={imageOpen} onOpenChange={setImageOpen}>
+    <DialogContent className="max-w-5xl w-[95vw] p-2 bg-background border-border">
+      <img
+        src={p.image}
+        alt={p.title}
+        className="w-full h-auto rounded-lg"
+      />
+    </DialogContent>
+  </Dialog>
+</>
 );
+};
 
 const SimpleCard = ({ p, i }: { p: Project; i: number }) => (
   <motion.div
