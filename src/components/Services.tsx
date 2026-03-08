@@ -1,43 +1,13 @@
 import { motion } from "framer-motion";
-import { Workflow, Database, Users, ShoppingBag, Zap, ArrowUpRight } from "lucide-react";
+import { Bot, Plug, MessageSquare, BarChart3, Brain, Lightbulb } from "lucide-react";
 
 const services = [
-  {
-    icon: Workflow,
-    title: "Workflow Automation",
-    desc: "Design and implement automated workflows that connect your apps and eliminate repetitive tasks.",
-    tags: ["Zapier", "Make", "n8n", "OpenRouter"],
-  },
-  {
-    icon: Database,
-    title: "Data Synchronization",
-    desc: "Keep your data consistent across all platforms with real-time sync and intelligent data mapping.",
-    tags: ["API Integration", "Webhooks", "ETL"],
-  },
-  {
-    icon: Users,
-    title: "CRM Automation",
-    desc: "Automate lead nurturing, follow-ups, and client communications for maximum efficiency.",
-    tags: ["GoHighLevel", "HubSpot", "Salesforce"],
-  },
-  {
-    icon: ShoppingBag,
-    title: "E-Commerce Integration",
-    desc: "Streamline order processing, inventory management, and customer support automation.",
-    tags: ["Shopify", "WooCommerce", "Stripe"],
-  },
-  {
-    icon: Zap,
-    title: "Custom Integrations",
-    desc: "Build bespoke solutions for unique business challenges with conditional logic and API connections.",
-    tags: ["REST APIs", "GraphQL", "Webhooks"],
-  },
-  {
-    icon: ArrowUpRight,
-    title: "Onboarding Funnels",
-    desc: "Create seamless client onboarding experiences with automated sequences and milestone tracking.",
-    tags: ["GHL Funnels", "Email Sequences", "SMS"],
-  },
+  { icon: Bot, title: "AI Workflow Automation", desc: "End-to-end AI-powered workflows that eliminate repetitive tasks and boost productivity." },
+  { icon: Plug, title: "API & App Integrations", desc: "Seamless connections between your favourite tools, platforms, and data sources." },
+  { icon: MessageSquare, title: "AI Chatbot Development", desc: "Intelligent conversational agents that handle customer support and inquiries 24/7." },
+  { icon: BarChart3, title: "CRM & Business Process Automation", desc: "Streamlined CRM pipelines and business processes for maximum efficiency." },
+  { icon: Brain, title: "Custom AI Agents", desc: "Bespoke AI agents tailored to your specific business needs and goals." },
+  { icon: Lightbulb, title: "Automation Consulting", desc: "Strategic consulting to identify and implement the highest-impact automation opportunities." },
 ];
 
 const cardVariants = {
@@ -73,23 +43,13 @@ const Services = () => {
               whileInView="visible"
               viewport={{ once: true, margin: "-80px" }}
               variants={cardVariants}
-              className="glass-card hover-lift p-8 group cursor-default flex flex-col"
+              className="glass-card hover-lift p-8 group cursor-default"
             >
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors">
                 <s.icon className="text-primary" size={24} />
               </div>
-              <h3 className="font-heading text-lg font-semibold mb-3">{s.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1">{s.desc}</p>
-              <div className="flex flex-wrap gap-2">
-                {s.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-xs px-3 py-1 rounded-full border border-border/50 text-muted-foreground"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
+              <h3 className="font-heading text-lg font-semibold mb-2">{s.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">{s.desc}</p>
             </motion.div>
           ))}
         </div>
