@@ -116,11 +116,13 @@ const DetailedCard = ({ p, i }: { p: Project; i: number }) => {
           {/* Image */}
           <div
             className="relative h-64 lg:h-full bg-secondary overflow-hidden cursor-zoom-in"
-            onClick={() => setImageOpen(true)}
+            onClick={(e) => { e.stopPropagation(); setImageOpen(true); }}
           >
             <img
               src={p.image}
               alt={p.title}
+              decoding="sync"
+              loading="eager"
               className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
             />
           </div>
