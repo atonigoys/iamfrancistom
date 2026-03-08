@@ -1,15 +1,29 @@
 import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 
+const tools = [
+  { name: "ChatGPT", logo: "/images/tools/chatgpt.svg" },
+  { name: "Zapier", logo: "/images/tools/zapier.svg" },
+  { name: "n8n", logo: "/images/tools/n8n.svg" },
+  { name: "Google AI Studio", logo: "/images/tools/google-ai-studio.svg" },
+  { name: "Airtable", logo: "/images/tools/airtable.svg" },
+  { name: "Lovable", logo: "/images/tools/lovable.png" },
+  { name: "Google Docs", logo: "/images/tools/google-docs.svg" },
+  { name: "Google Sheets", logo: "/images/tools/google-sheets.svg" },
+  { name: "Slack", logo: "/images/tools/slack.svg" },
+  { name: "Asana", logo: "/images/tools/asana.svg" },
+  { name: "Xero", logo: "/images/tools/xero.svg" },
+];
+
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center section-padding pt-28 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col items-center justify-center section-padding pt-28 overflow-hidden">
       {/* Background grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(hsl(0,0%,15%)_1px,transparent_1px),linear-gradient(90deg,hsl(0,0%,15%)_1px,transparent_1px)] bg-[size:60px_60px] opacity-20" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
       {/* Glow orb */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/5 blur-[120px] animate-pulse-glow" />
 
-      <div className="relative max-w-4xl mx-auto text-center">
+      <div className="relative max-w-4xl mx-auto text-center flex-1 flex flex-col justify-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -62,6 +76,39 @@ const Hero = () => {
           </a>
         </motion.div>
       </div>
+
+      {/* Tools marquee */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.8, duration: 0.8 }}
+        className="relative w-full mt-16 mb-16"
+      >
+        <p className="text-center text-xs text-muted-foreground uppercase tracking-widest mb-6">
+          Tools I Work With
+        </p>
+        <div className="relative overflow-hidden">
+          {/* Fade edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-background to-transparent z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-background to-transparent z-10" />
+          {/* Scrolling strip */}
+          <div className="flex animate-marquee w-max">
+            {[...tools, ...tools].map((tool, i) => (
+              <div
+                key={`${tool.name}-${i}`}
+                className="flex items-center gap-2.5 mx-6 px-4 py-2.5 rounded-lg bg-secondary/60 border border-border/30 hover:border-primary/30 transition-colors shrink-0"
+              >
+                <img
+                  src={tool.logo}
+                  alt={tool.name}
+                  className="w-5 h-5 brightness-0 invert opacity-70"
+                />
+                <span className="text-sm text-muted-foreground whitespace-nowrap">{tool.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </motion.div>
 
       <motion.a
         href="#services"
