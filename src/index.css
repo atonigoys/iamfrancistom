@@ -8,37 +8,26 @@
   :root {
     --background: 0 0% 5%;
     --foreground: 0 0% 95%;
-
     --card: 0 0% 8%;
     --card-foreground: 0 0% 95%;
-
     --popover: 0 0% 8%;
     --popover-foreground: 0 0% 95%;
-
     --primary: 168 80% 50%;
     --primary-foreground: 0 0% 5%;
-
     --secondary: 0 0% 12%;
     --secondary-foreground: 0 0% 80%;
-
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 55%;
-
     --accent: 168 80% 50%;
     --accent-foreground: 0 0% 5%;
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 0 0% 15%;
     --input: 0 0% 15%;
     --ring: 168 80% 50%;
-
     --radius: 0.75rem;
-
     --font-heading: 'Space Grotesk', sans-serif;
     --font-body: 'Inter', sans-serif;
-
     --sidebar-background: 0 0% 8%;
     --sidebar-foreground: 0 0% 95%;
     --sidebar-primary: 168 80% 50%;
@@ -54,15 +43,12 @@
   * {
     @apply border-border;
   }
-
   body {
     @apply bg-background text-foreground font-body antialiased;
   }
-
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
   }
-
   html {
     scroll-behavior: smooth;
   }
@@ -72,34 +58,38 @@
   .glass-card {
     @apply bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl;
   }
-
   .gradient-text {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(to right, hsl(168, 80%, 50%), hsl(200, 80%, 60%));
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
   }
-
   .hover-lift {
     @apply transition-all duration-300 hover:-translate-y-1;
   }
-
-  .hover-lift:hover {
-    box-shadow: 0 10px 40px -10px rgba(45, 212, 191, 0.15);
-  }
-
   .section-padding {
-    @apply py-20 md:py-28 px-6 md:px-8;
+    @apply py-20 px-6;
   }
-
   .btn-glow {
     @apply relative overflow-hidden transition-all duration-300;
-    box-shadow: 0 0 0 0 hsla(168, 80%, 50%, 0);
   }
+}
 
-  .btn-glow:hover {
-    box-shadow: 0 0 20px 2px hsla(168, 80%, 50%, 0.3);
-  }
+/* Styles outside @layer to avoid PostCSS parsing issues */
+.hover-lift:hover {
+  box-shadow: 0 10px 40px -10px rgba(45, 212, 191, 0.15);
+}
 
-  .btn-glow:active {
-    transform: scale(0.97);
+.btn-glow:hover {
+  box-shadow: 0 0 20px 2px rgba(45, 212, 191, 0.3);
+}
+
+.btn-glow:active {
+  transform: scale(0.97);
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
