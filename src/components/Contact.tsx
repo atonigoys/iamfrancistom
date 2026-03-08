@@ -37,6 +37,31 @@ const Contact = () => {
             className="w-full"
           />
         </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-10"
+        >
+          <a
+            href="mailto:sayfrancistom@gmail.com"
+            className="flex items-center gap-3 px-5 py-3 rounded-lg bg-secondary/60 border border-border/30 hover:border-primary/30 transition-colors"
+          >
+            <Mail size={18} className="text-primary" />
+            <span className="text-sm text-muted-foreground">sayfrancistom@gmail.com</span>
+          </a>
+          <a
+            href="https://wa.me/639541551360"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 px-5 py-3 rounded-lg bg-secondary/60 border border-border/30 hover:border-primary/30 transition-colors"
+          >
+            <MessageCircle size={18} className="text-primary" />
+            <span className="text-sm text-muted-foreground">+639 541 551 360</span>
+          </a>
+        </motion.div>
       </div>
     </section>
   );
