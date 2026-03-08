@@ -365,8 +365,28 @@ const Portfolio = () => {
   useEffect(() => { setPage(0); }, [active]);
 
   return (
-    <section id="portfolio" className="section-padding bg-secondary/30">
-      <div className="max-w-7xl mx-auto">
+    <section id="portfolio" className="section-padding bg-secondary/30 relative overflow-hidden">
+      {/* Network line pattern background */}
+      <svg className="absolute inset-0 w-full h-full opacity-[0.03] pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="network-grid" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
+            <circle cx="0" cy="0" r="1.5" fill="hsl(var(--primary))" />
+            <circle cx="120" cy="0" r="1.5" fill="hsl(var(--primary))" />
+            <circle cx="0" cy="120" r="1.5" fill="hsl(var(--primary))" />
+            <circle cx="120" cy="120" r="1.5" fill="hsl(var(--primary))" />
+            <circle cx="60" cy="60" r="1.5" fill="hsl(var(--primary))" />
+            <line x1="0" y1="0" x2="60" y2="60" stroke="hsl(var(--primary))" strokeWidth="0.5" />
+            <line x1="120" y1="0" x2="60" y2="60" stroke="hsl(var(--primary))" strokeWidth="0.5" />
+            <line x1="0" y1="120" x2="60" y2="60" stroke="hsl(var(--primary))" strokeWidth="0.5" />
+            <line x1="120" y1="120" x2="60" y2="60" stroke="hsl(var(--primary))" strokeWidth="0.5" />
+            <line x1="0" y1="0" x2="120" y2="0" stroke="hsl(var(--primary))" strokeWidth="0.3" />
+            <line x1="0" y1="0" x2="0" y2="120" stroke="hsl(var(--primary))" strokeWidth="0.3" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#network-grid)" />
+      </svg>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
