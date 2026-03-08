@@ -108,14 +108,21 @@ const Hero = () => {
             {[...tools, ...tools].map((tool, i) => (
               <div
                 key={`${tool.name}-${i}`}
-                className="flex items-center gap-2.5 mx-6 px-4 py-2.5 rounded-lg bg-secondary/60 border border-border/30 hover:border-primary/30 transition-colors shrink-0"
+                className="flex items-center gap-2.5 mx-4 px-4 py-2.5 rounded-lg bg-secondary/60 border border-border/30 hover:border-primary/30 transition-colors shrink-0"
               >
-                <img
-                  src={tool.logo}
-                  alt={tool.name}
-                  className="w-5 h-5 brightness-0 invert opacity-70"
-                />
+                {tool.logo ? (
+                  <img
+                    src={tool.logo}
+                    alt={tool.name}
+                    className="w-5 h-5 brightness-0 invert opacity-70"
+                  />
+                ) : (
+                  <span className="w-5 h-5 rounded bg-primary/20 flex items-center justify-center text-[10px] font-bold text-primary">
+                    {tool.name.charAt(0)}
+                  </span>
+                )}
                 <span className="text-sm text-muted-foreground whitespace-nowrap">{tool.name}</span>
+              </div>
               </div>
             ))}
           </div>
