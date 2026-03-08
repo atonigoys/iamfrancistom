@@ -34,7 +34,7 @@ const Hero = () => {
       {/* Neural network background */}
       <NeuralNetworkBackground />
       {/* Subtle overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-background/80" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/80" />
 
       <div className="relative max-w-4xl mx-auto text-center flex-1 flex flex-col justify-center">
         <motion.div
