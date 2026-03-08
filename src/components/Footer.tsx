@@ -26,7 +26,7 @@ const Footer = () => {
         </div>
 
         <p className="text-muted-foreground text-sm">
-          © {new Date().getFullYear()} FRANCIS.TECH. All rights reserved.
+          © {new Date().getFullYear()} FRANCIS TOM SAY. All rights reserved.
         </p>
       </div>
     </footer>
