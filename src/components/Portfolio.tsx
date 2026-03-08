@@ -123,41 +123,54 @@ const DetailedCard = ({ p, i }: { p: Project; i: number }) => {
     </div>
   </motion.div>
 
-  <Dialog open={imageOpen} onOpenChange={(open) => { setImageOpen(open); if (!open) { setZoom(1); setPosition({ x: 0, y: 0 }); } }}>
-    <DialogContent className="max-w-5xl w-[95vw] p-2 bg-background border-border !animate-none !duration-0">
+  {imageOpen && createPortal(
+    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center" onClick={() => { setImageOpen(false); setZoom(1); setPosition({ x: 0, y: 0 }); }}>
+      <div className="absolute inset-0 bg-black/80" />
       <div
-        className="relative overflow-hidden max-h-[85vh] rounded-lg"
-        style={{ cursor: zoom > 1 ? (isDragging ? 'grabbing' : 'grab') : 'default' }}
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseUp}
+        className="relative z-10 max-w-5xl w-[95vw] p-2 bg-background border border-border rounded-lg"
+        onClick={(e) => e.stopPropagation()}
       >
-        <img
-          src={p.image}
-          alt={p.title}
-          className={`w-full h-auto rounded-lg select-none ${isDragging ? '' : 'transition-transform duration-200'}`}
-          draggable={false}
-          style={{ transform: `scale(${zoom}) translate(${position.x / zoom}px, ${position.y / zoom}px)`, transformOrigin: 'center center' }}
-        />
-      </div>
-      <div className="flex items-center justify-center gap-3 pt-2">
         <button
-          onClick={() => { setZoom((z) => { const nz = Math.max(0.5, z - 0.25); if (nz <= 1) setPosition({ x: 0, y: 0 }); return nz; }); }}
-          className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-secondary border border-border/30 text-sm font-medium hover:bg-secondary/80 transition-colors"
+          onClick={() => { setImageOpen(false); setZoom(1); setPosition({ x: 0, y: 0 }); }}
+          className="absolute right-4 top-4 z-20 rounded-sm opacity-70 hover:opacity-100 transition-opacity"
         >
-          <ZoomOut size={16} /> Zoom Out
+          <X className="h-4 w-4" />
         </button>
-        <span className="text-sm text-muted-foreground min-w-[4ch] text-center">{Math.round(zoom * 100)}%</span>
-        <button
-          onClick={() => setZoom((z) => Math.min(3, z + 0.25))}
-          className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-secondary border border-border/30 text-sm font-medium hover:bg-secondary/80 transition-colors"
+        <div
+          className="relative overflow-hidden max-h-[85vh] rounded-lg"
+          style={{ cursor: zoom > 1 ? (isDragging ? 'grabbing' : 'grab') : 'default' }}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp}
         >
-          <ZoomIn size={16} /> Zoom In
-        </button>
+          <img
+            src={p.image}
+            alt={p.title}
+            className={`w-full h-auto rounded-lg select-none ${isDragging ? '' : ''}`}
+            draggable={false}
+            style={{ transform: `scale(${zoom}) translate(${position.x / zoom}px, ${position.y / zoom}px)`, transformOrigin: 'center center' }}
+          />
+        </div>
+        <div className="flex items-center justify-center gap-3 pt-2">
+          <button
+            onClick={() => { setZoom((z) => { const nz = Math.max(0.5, z - 0.25); if (nz <= 1) setPosition({ x: 0, y: 0 }); return nz; }); }}
+            className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-secondary border border-border/30 text-sm font-medium hover:bg-secondary/80 transition-colors"
+          >
+            <ZoomOut size={16} /> Zoom Out
+          </button>
+          <span className="text-sm text-muted-foreground min-w-[4ch] text-center">{Math.round(zoom * 100)}%</span>
+          <button
+            onClick={() => setZoom((z) => Math.min(3, z + 0.25))}
+            className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-secondary border border-border/30 text-sm font-medium hover:bg-secondary/80 transition-colors"
+          >
+            <ZoomIn size={16} /> Zoom In
+          </button>
+        </div>
       </div>
-    </DialogContent>
-  </Dialog>
+    </div>,
+    document.body
+  )}
 </>
 );
 };
