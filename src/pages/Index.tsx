@@ -8,7 +8,7 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 const NeonDivider = () => (
-  <div className="w-full h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
+  <div className="w-full h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent" />
 );
 
 const Index = () => {
