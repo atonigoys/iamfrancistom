@@ -8,10 +8,22 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 const NeonDivider = () => (
-  <div className="relative w-full h-[1px]">
-    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#00ff88] to-transparent opacity-80" />
-    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#00ff88] to-transparent blur-[8px] animate-pulse-glow" />
-    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#00ff88] to-transparent blur-[20px] opacity-40 animate-pulse-glow" />
+  <div className="relative w-full h-[1px] overflow-hidden">
+    {/* Base line */}
+    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#00ff88]/60 to-transparent" />
+    {/* Soft glow */}
+    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#00ff88] to-transparent blur-[6px] opacity-50 animate-pulse-glow" />
+    {/* Wide ambient glow */}
+    <div className="absolute -top-[6px] -bottom-[6px] inset-x-0 bg-gradient-to-r from-transparent via-[#00ff88]/30 to-transparent blur-[16px] animate-pulse-glow" />
+    {/* Scanning beam */}
+    <div
+      className="absolute top-0 bottom-0 w-[120px] animate-[scan_4s_ease-in-out_infinite]"
+      style={{
+        background: "linear-gradient(90deg, transparent, #00ff88, transparent)",
+        filter: "blur(2px)",
+        opacity: 0.9,
+      }}
+    />
   </div>
 );
 
