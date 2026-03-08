@@ -11,11 +11,12 @@ const services = [
 ];
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 40, scale: 0.95 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.1, duration: 0.5, ease: "easeOut" as const },
+    scale: 1,
+    transition: { delay: i * 0.12, duration: 0.7, ease: "easeOut" as const },
   }),
 };
 
