@@ -97,8 +97,8 @@
 
 /* CTA Neon Button */
 @keyframes cta-pulse-glow {
-  0%, 100% { box-shadow: 0 0 12px rgba(0,255,136,0.6), 0 0 24px rgba(0,255,136,0.2); }
-  50% { box-shadow: 0 0 20px rgba(0,255,136,0.8), 0 0 40px rgba(0,255,136,0.3); }
+  0%, 100% { box-shadow: 0 0 12px rgba(0,255,138,0.6), 0 0 24px rgba(0,255,138,0.2); }
+  50% { box-shadow: 0 0 20px rgba(0,255,138,0.8), 0 0 40px rgba(0,255,138,0.3); }
 }
 
 @keyframes cta-float {
@@ -112,9 +112,9 @@
 }
 
 .cta-neon {
-  background: linear-gradient(135deg, #00FF88, #00FFA2);
+  background: linear-gradient(135deg, #00FF8A, #079D5D);
   border-radius: 999px;
-  box-shadow: 0 0 12px rgba(0,255,136,0.6);
+  box-shadow: 0 0 12px rgba(0,255,138,0.6);
   animation: cta-pulse-glow 3s ease-in-out infinite, cta-float 3s ease-in-out infinite;
   position: relative;
   overflow: hidden;
@@ -136,8 +136,8 @@
 
 .cta-neon:hover {
   transform: scale(1.05);
-  background: linear-gradient(135deg, #33FFaa, #33FFcc);
-  box-shadow: 0 0 24px rgba(0,255,136,0.9), 0 0 48px rgba(0,255,136,0.4);
+  background: linear-gradient(135deg, #33FFaa, #0ab76d);
+  box-shadow: 0 0 24px rgba(0,255,138,0.9), 0 0 48px rgba(0,255,138,0.4);
 }
 
 .cta-neon:active {
