@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, DollarSign, Clock, ZoomIn, ZoomOut, X } from "lucide-react";
+import { ExternalLink, DollarSign, Clock, X } from "lucide-react";
 import { createPortal } from "react-dom";
 
 const categories = ["All", "Zapier", "Make", "n8n", "GoHighLevel"] as const;
