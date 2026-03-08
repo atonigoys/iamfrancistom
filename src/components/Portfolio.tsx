@@ -269,7 +269,7 @@ const Portfolio = () => {
     });
   }, []);
 
-  const filtered = active === "All" ? projects : projects.filter((p) => p.category === active);
+  const filtered = active === "All" ? projects.slice(0, 4) : projects.filter((p) => p.category === active);
 
   return (
     <section id="portfolio" className="section-padding bg-secondary/30">
