@@ -176,9 +176,9 @@ const DetailedCard = ({ p, i, compact = false }: { p: Project; i: number; compac
             <div className="absolute inset-0 bg-muted/60 group-hover:bg-transparent transition-colors duration-500" />
           </div>
           <div className="p-5 flex flex-col flex-1">
-            <span className="text-xs text-foreground/60 font-medium tracking-widest uppercase mb-1">{p.tag}</span>
-            <h3 className="font-heading text-lg font-bold mb-2 text-foreground">{p.title}</h3>
-            <p className="text-foreground/70 text-sm leading-relaxed mb-4 line-clamp-2">{p.desc}</p>
+            <span className="text-xs text-foreground/40 group-hover:text-foreground/70 font-medium tracking-widest uppercase mb-1 transition-colors duration-300">{p.tag}</span>
+            <h3 className="font-heading text-lg font-bold mb-2 text-foreground/70 group-hover:text-foreground transition-colors duration-300">{p.title}</h3>
+            <p className="text-foreground/40 group-hover:text-foreground/80 text-sm leading-relaxed mb-4 line-clamp-2 transition-colors duration-300">{p.desc}</p>
             {p.savings && (
               <div className="flex gap-3 mt-auto">
                 <span className="flex items-center gap-1.5 text-xs font-medium bg-secondary/80 px-2.5 py-1 rounded-full border border-border/30">
@@ -237,16 +237,16 @@ const DetailedCard = ({ p, i, compact = false }: { p: Project; i: number; compac
           </div>
       {/* Content */}
       <div className="p-6 md:p-8 flex flex-col justify-center">
-        <span className="text-xs text-foreground/60 font-medium tracking-widest uppercase mb-2">{p.tag}</span>
-        <h3 className="font-heading text-xl font-bold mb-3 text-foreground">{p.title}</h3>
-        <p className="text-foreground/70 text-sm leading-relaxed mb-5">{p.desc}</p>
+        <span className="text-xs text-foreground/40 group-hover:text-foreground/70 font-medium tracking-widest uppercase mb-2 transition-colors duration-300">{p.tag}</span>
+        <h3 className="font-heading text-xl font-bold mb-3 text-foreground/70 group-hover:text-foreground transition-colors duration-300">{p.title}</h3>
+        <p className="text-foreground/40 group-hover:text-foreground/80 text-sm leading-relaxed mb-5 transition-colors duration-300">{p.desc}</p>
 
         {p.results && (
           <div className="mb-5">
             <h4 className="text-sm font-semibold mb-2">Key Results</h4>
             <ul className="space-y-1.5">
               {p.results.map((r) => (
-                <li key={r} className="text-foreground/70 text-sm flex items-start gap-2">
+                <li key={r} className="text-foreground/40 group-hover:text-foreground/80 text-sm flex items-start gap-2 transition-colors duration-300">
                   <span className="text-primary mt-0.5">✔</span> {r}
                 </li>
               ))}
