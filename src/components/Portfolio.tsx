@@ -199,7 +199,7 @@ const DetailedCard = ({ p, i }: { p: Project; i: number }) => {
     <div className="fixed inset-0 z-50 flex items-center justify-center" onClick={() => setImageOpen(false)}>
       <div className="absolute inset-0 bg-black/80" />
       <div
-        className="relative z-10 max-w-5xl w-[95vw] bg-background border border-border rounded-lg overflow-hidden"
+        className="relative z-10 max-w-5xl w-[95vw] bg-background border border-border rounded-lg overflow-hidden hover:shadow-[0_0_30px_-5px_rgba(0,255,0,0.4)] transition-shadow duration-300"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between px-4 py-3 border-b border-border">
