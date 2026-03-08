@@ -21,8 +21,17 @@ const cardVariants = {
 
 const Services = () => {
   return (
-    <section id="services" className="section-padding bg-secondary/30">
-      <div className="max-w-7xl mx-auto">
+    <section id="services" className="section-padding bg-secondary/30 relative overflow-hidden">
+      {/* Dotted grid pattern */}
+      <div
+        className="absolute inset-0 opacity-[0.07] pointer-events-none"
+        style={{
+          backgroundImage: "radial-gradient(circle, #00ff00 1px, transparent 1px)",
+          backgroundSize: "30px 30px",
+        }}
+      />
+
+      <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -43,7 +52,7 @@ const Services = () => {
               whileInView="visible"
               viewport={{ once: true, margin: "-80px" }}
               variants={cardVariants}
-              className="glass-card hover-lift p-8 group cursor-default"
+              className="glass-card hover-lift p-8 group cursor-default hover:shadow-[0_0_25px_-5px_rgba(0,255,0,0.25)] transition-shadow duration-300"
             >
               <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors">
                 <s.icon className="text-primary" size={24} />
