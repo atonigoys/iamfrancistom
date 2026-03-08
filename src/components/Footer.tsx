@@ -12,18 +12,19 @@ const Footer = () => {
           FRANCIS <span className="text-primary">TOM SAY</span>
         </a>
 
-        <p className="text-muted-foreground text-sm">
-          © {new Date().getFullYear()} FRANCIS TOM SAY. All rights reserved.
-        </p>
+        <div className="flex items-center gap-4">
+          <p className="text-muted-foreground text-sm">
+            © {new Date().getFullYear()} FRANCIS TOM SAY. All rights reserved.
+          </p>
+          <button
+            onClick={scrollToTop}
+            className="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-[0_0_16px_rgba(0,255,138,0.4)] hover:shadow-[0_0_24px_rgba(0,255,138,0.6)] hover:scale-110 transition-all duration-300"
+            aria-label="Back to top"
+          >
+            <ArrowUp size={18} />
+          </button>
+        </div>
       </div>
-
-      <button
-        onClick={scrollToTop}
-        className="fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-[0_0_20px_rgba(0,255,138,0.4)] hover:shadow-[0_0_30px_rgba(0,255,138,0.6)] hover:scale-110 transition-all duration-300"
-        aria-label="Back to top"
-      >
-        <ArrowUp size={20} />
-      </button>
     </footer>
   );
 };
