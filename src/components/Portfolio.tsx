@@ -143,7 +143,7 @@ const DetailedCard = ({ p, i }: { p: Project; i: number }) => {
       </div>
       <div className="flex items-center justify-center gap-3 pt-2">
         <button
-          onClick={() => setZoom((z) => Math.max(0.5, z - 0.25))}
+          onClick={() => { setZoom((z) => { const nz = Math.max(0.5, z - 0.25); if (nz <= 1) setPosition({ x: 0, y: 0 }); return nz; }); }}
           className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-secondary border border-border/30 text-sm font-medium hover:bg-secondary/80 transition-colors"
         >
           <ZoomOut size={16} /> Zoom Out
