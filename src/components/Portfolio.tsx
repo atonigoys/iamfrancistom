@@ -21,7 +21,8 @@ const Portfolio = () => {
           className="text-center mb-16"
         >
           <span className="text-primary text-sm font-medium tracking-widest uppercase">Portfolio</span>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold mt-3">Portfolio</h2>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold mt-3">Previous Works</h2>
+          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">Selected automation projects demonstrating how intelligent workflows can transform complex processes into seamless systems.</p>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
