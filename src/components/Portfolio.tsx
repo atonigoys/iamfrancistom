@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, DollarSign, Clock, X } from "lucide-react";
+import { ExternalLink, DollarSign, Clock, ZoomIn, ZoomOut } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 const categories = ["All", "Zapier", "Make", "n8n", "GoHighLevel"] as const;
@@ -42,7 +42,7 @@ const projects: Project[] = [
 
 const DetailedCard = ({ p, i }: { p: Project; i: number }) => {
   const [imageOpen, setImageOpen] = useState(false);
-
+  const [zoom, setZoom] = useState(1);
   return (
     <>
       <motion.div
@@ -108,13 +108,31 @@ const DetailedCard = ({ p, i }: { p: Project; i: number }) => {
     </div>
   </motion.div>
 
-  <Dialog open={imageOpen} onOpenChange={setImageOpen}>
+  <Dialog open={imageOpen} onOpenChange={(open) => { setImageOpen(open); if (!open) setZoom(1); }}>
     <DialogContent className="max-w-5xl w-[95vw] p-2 bg-background border-border">
-      <img
-        src={p.image}
-        alt={p.title}
-        className="w-full h-auto rounded-lg"
-      />
+      <div className="relative overflow-auto max-h-[85vh] rounded-lg">
+        <img
+          src={p.image}
+          alt={p.title}
+          className="w-full h-auto rounded-lg transition-transform duration-300 origin-top-left"
+          style={{ transform: `scale(${zoom})` }}
+        />
+      </div>
+      <div className="flex items-center justify-center gap-3 pt-2">
+        <button
+          onClick={() => setZoom((z) => Math.max(0.5, z - 0.25))}
+          className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-secondary border border-border/30 text-sm font-medium hover:bg-secondary/80 transition-colors"
+        >
+          <ZoomOut size={16} /> Zoom Out
+        </button>
+        <span className="text-sm text-muted-foreground min-w-[4ch] text-center">{Math.round(zoom * 100)}%</span>
+        <button
+          onClick={() => setZoom((z) => Math.min(3, z + 0.25))}
+          className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-secondary border border-border/30 text-sm font-medium hover:bg-secondary/80 transition-colors"
+        >
+          <ZoomIn size={16} /> Zoom In
+        </button>
+      </div>
     </DialogContent>
   </Dialog>
 </>
