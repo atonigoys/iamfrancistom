@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, MessageCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
@@ -46,9 +46,10 @@ const Navbar = () => {
           ))}
           <a
             href="#contact"
-            className="btn-glow text-sm px-5 py-2 rounded-lg bg-primary text-primary-foreground font-medium"
+            className="btn-glow text-sm px-5 py-2 rounded-lg bg-primary text-primary-foreground font-medium flex items-center gap-2"
           >
-            Get in Touch
+            <MessageCircle size={16} />
+            LET'S TALK
           </a>
         </div>
 
