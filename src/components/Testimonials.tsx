@@ -66,15 +66,15 @@ const FloatingParticles = () => {
         // Glow
         ctx.beginPath();
         const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
-        gradient.addColorStop(0, `rgba(0, 255, 0, ${p.opacity * 0.5})`);
-        gradient.addColorStop(1, "rgba(0, 255, 0, 0)");
+         gradient.addColorStop(0, `rgba(0, 255, 138, ${p.opacity * 0.5})`);
+         gradient.addColorStop(1, "rgba(0, 255, 138, 0)");
         ctx.fillStyle = gradient;
         ctx.arc(p.x, p.y, p.r * 4, 0, Math.PI * 2);
         ctx.fill();
 
         // Core
         ctx.beginPath();
-        ctx.fillStyle = `rgba(0, 255, 0, ${p.opacity})`;
+        ctx.fillStyle = `rgba(0, 255, 138, ${p.opacity})`;
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fill();
       });

@@ -122,7 +122,7 @@ const NeuralNetworkBackground = () => {
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = `rgba(0, 255, 0, ${alpha})`;
+            ctx.strokeStyle = `rgba(0, 255, 138, ${alpha})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
@@ -137,8 +137,8 @@ const NeuralNetworkBackground = () => {
 
         // Outer glow
         const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, glowSize * 4);
-        gradient.addColorStop(0, `rgba(0, 255, 0, ${coreAlpha * 0.3})`);
-        gradient.addColorStop(1, "rgba(0, 255, 0, 0)");
+         gradient.addColorStop(0, `rgba(0, 255, 138, ${coreAlpha * 0.3})`);
+         gradient.addColorStop(1, "rgba(0, 255, 138, 0)");
         ctx.beginPath();
         ctx.arc(node.x, node.y, glowSize * 4, 0, Math.PI * 2);
         ctx.fillStyle = gradient;
@@ -147,7 +147,7 @@ const NeuralNetworkBackground = () => {
         // Core
         ctx.beginPath();
         ctx.arc(node.x, node.y, glowSize, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(0, 255, 0, ${coreAlpha})`;
+        ctx.fillStyle = `rgba(0, 255, 138, ${coreAlpha})`;
         ctx.fill();
       }
 

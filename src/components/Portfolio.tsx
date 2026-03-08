@@ -195,7 +195,7 @@ const DetailedCard = ({ p, i, compact = false }: { p: Project; i: number; compac
         {imageOpen && createPortal(
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={() => setImageOpen(false)}>
             <div className="absolute inset-0 bg-black/90" />
-            <div className="relative z-10 max-w-[95vw] max-h-[95vh] w-full bg-background border border-border rounded-lg overflow-hidden shadow-[0_0_40px_-5px_rgba(0,255,0,0.3)]" onClick={(e) => e.stopPropagation()}>
+            <div className="relative z-10 max-w-[95vw] max-h-[95vh] w-full bg-background border border-border rounded-lg overflow-hidden shadow-[0_0_40px_-5px_rgba(0,255,138,0.3)]" onClick={(e) => e.stopPropagation()}>
               <div className="flex items-center justify-between px-5 py-3 border-b border-border">
                 <h3 className="font-heading text-base font-semibold">{p.title}</h3>
                 <button onClick={() => setImageOpen(false)} className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center opacity-70 hover:opacity-100 transition-opacity"><X className="h-5 w-5" /></button>
@@ -283,7 +283,7 @@ const DetailedCard = ({ p, i, compact = false }: { p: Project; i: number; compac
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={() => setImageOpen(false)}>
       <div className="absolute inset-0 bg-black/90" />
       <div
-        className="relative z-10 max-w-[95vw] max-h-[95vh] w-full bg-background border border-border rounded-lg overflow-hidden shadow-[0_0_40px_-5px_rgba(0,255,0,0.3)]"
+        className="relative z-10 max-w-[95vw] max-h-[95vh] w-full bg-background border border-border rounded-lg overflow-hidden shadow-[0_0_40px_-5px_rgba(0,255,138,0.3)]"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between px-5 py-3 border-b border-border">
@@ -372,17 +372,17 @@ const Portfolio = () => {
       <svg className="absolute inset-0 w-full h-full opacity-[0.06] pointer-events-none" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <pattern id="network-grid" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
-            <circle cx="0" cy="0" r="1.5" fill="#00ff00" />
-            <circle cx="120" cy="0" r="1.5" fill="#00ff00" />
-            <circle cx="0" cy="120" r="1.5" fill="#00ff00" />
-            <circle cx="120" cy="120" r="1.5" fill="#00ff00" />
-            <circle cx="60" cy="60" r="1.5" fill="#00ff00" />
-            <line x1="0" y1="0" x2="60" y2="60" stroke="#00ff00" strokeWidth="0.5" />
-            <line x1="120" y1="0" x2="60" y2="60" stroke="#00ff00" strokeWidth="0.5" />
-            <line x1="0" y1="120" x2="60" y2="60" stroke="#00ff00" strokeWidth="0.5" />
-            <line x1="120" y1="120" x2="60" y2="60" stroke="#00ff00" strokeWidth="0.5" />
-            <line x1="0" y1="0" x2="120" y2="0" stroke="#00ff00" strokeWidth="0.3" />
-            <line x1="0" y1="0" x2="0" y2="120" stroke="#00ff00" strokeWidth="0.3" />
+            <circle cx="0" cy="0" r="1.5" fill="#00FF8A" />
+            <circle cx="120" cy="0" r="1.5" fill="#00FF8A" />
+            <circle cx="0" cy="120" r="1.5" fill="#00FF8A" />
+            <circle cx="120" cy="120" r="1.5" fill="#00FF8A" />
+            <circle cx="60" cy="60" r="1.5" fill="#00FF8A" />
+            <line x1="0" y1="0" x2="60" y2="60" stroke="#00FF8A" strokeWidth="0.5" />
+            <line x1="120" y1="0" x2="60" y2="60" stroke="#00FF8A" strokeWidth="0.5" />
+            <line x1="0" y1="120" x2="60" y2="60" stroke="#00FF8A" strokeWidth="0.5" />
+            <line x1="120" y1="120" x2="60" y2="60" stroke="#00FF8A" strokeWidth="0.5" />
+            <line x1="0" y1="0" x2="120" y2="0" stroke="#00FF8A" strokeWidth="0.3" />
+            <line x1="0" y1="0" x2="0" y2="120" stroke="#00FF8A" strokeWidth="0.3" />
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#network-grid)" />
