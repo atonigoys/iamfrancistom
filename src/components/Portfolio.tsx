@@ -20,7 +20,7 @@ const Portfolio = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-primary text-sm font-medium tracking-widest uppercase">Previous Works</span>
+          <span className="text-primary text-sm font-medium tracking-widest uppercase">Portfolio</span>
           <h2 className="font-heading text-3xl md:text-4xl font-bold mt-3">Portfolio</h2>
         </motion.div>
 
