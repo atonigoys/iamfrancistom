@@ -124,7 +124,7 @@ const DetailedCard = ({ p, i }: { p: Project; i: number }) => {
   </motion.div>
 
   <Dialog open={imageOpen} onOpenChange={(open) => { setImageOpen(open); if (!open) { setZoom(1); setPosition({ x: 0, y: 0 }); } }}>
-    <DialogContent className="max-w-5xl w-[95vw] p-2 bg-background border-border">
+    <DialogContent className="max-w-5xl w-[95vw] p-2 bg-background border-border !animate-none !duration-0">
       <div
         className="relative overflow-hidden max-h-[85vh] rounded-lg"
         style={{ cursor: zoom > 1 ? (isDragging ? 'grabbing' : 'grab') : 'default' }}
