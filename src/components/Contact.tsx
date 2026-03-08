@@ -37,7 +37,7 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="glass-card overflow-hidden rounded-xl"
+          className="glass-card overflow-hidden rounded-xl shadow-[0_0_50px_-12px_hsl(var(--primary)/0.3)] border border-primary/10"
         >
           <iframe
             src="https://calendly.com/sayfrancistom/30min"
