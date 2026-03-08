@@ -151,10 +151,12 @@ const DetailedCard = ({ p, i }: { p: Project; i: number }) => {
         >
           <X className="h-4 w-4" />
         </button>
-        <div className="overflow-auto max-h-[85vh] rounded-lg">
+        <div className="overflow-auto max-h-[85vh] rounded-lg will-change-contents">
           <img
             src={p.image}
             alt={p.title}
+            decoding="sync"
+            loading="eager"
             className="w-full h-auto rounded-lg"
           />
         </div>
