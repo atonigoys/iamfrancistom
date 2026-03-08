@@ -1,15 +1,23 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 
+const categories = ["All", "Zapier", "Make", "n8n", "GoHighLevel"] as const;
+type Category = (typeof categories)[number];
+
 const projects = [
-  { title: "AI Customer Support Chatbot", desc: "An intelligent chatbot handling customer inquiries with natural language understanding." },
-  { title: "Lead Generation Automation System", desc: "Automated pipeline that captures, qualifies, and nurtures leads across channels." },
-  { title: "AI Agent for Customer Inquiries", desc: "Custom AI agent providing instant, accurate responses to customer questions." },
-  { title: "Automated CRM Workflow System", desc: "End-to-end CRM automation reducing manual data entry and follow-up tasks." },
-  { title: "Social Media Automation Pipeline", desc: "Multi-platform content scheduling and engagement automation system." },
+  { title: "AI Customer Support Chatbot", desc: "An intelligent chatbot handling customer inquiries with natural language understanding.", category: "Make" as Category },
+  { title: "Lead Generation Automation System", desc: "Automated pipeline that captures, qualifies, and nurtures leads across channels.", category: "Zapier" as Category },
+  { title: "AI Agent for Customer Inquiries", desc: "Custom AI agent providing instant, accurate responses to customer questions.", category: "n8n" as Category },
+  { title: "Automated CRM Workflow System", desc: "End-to-end CRM automation reducing manual data entry and follow-up tasks.", category: "GoHighLevel" as Category },
+  { title: "Social Media Automation Pipeline", desc: "Multi-platform content scheduling and engagement automation system.", category: "Make" as Category },
 ];
 
 const Portfolio = () => {
+  const [active, setActive] = useState<Category>("All");
+
+  const filtered = active === "All" ? projects : projects.filter((p) => p.category === active);
+
   return (
     <section id="portfolio" className="section-padding">
       <div className="max-w-7xl mx-auto">
@@ -25,38 +33,62 @@ const Portfolio = () => {
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">Selected automation projects demonstrating how intelligent workflows can transform complex processes into seamless systems.</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((p, i) => (
-            <motion.div
-              key={p.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="glass-card hover-lift group overflow-hidden cursor-pointer"
+        {/* Tabs */}
+        <div className="flex flex-wrap justify-center gap-3 mb-10">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActive(cat)}
+              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 border ${
+                active === cat
+                  ? "bg-primary text-primary-foreground border-primary"
+                  : "bg-secondary/60 text-muted-foreground border-border/30 hover:border-primary/50 hover:text-foreground"
+              }`}
             >
-              {/* Image placeholder */}
-              <div className="relative h-48 bg-gradient-to-br from-primary/10 to-secondary overflow-hidden">
-                <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_30%,hsl(168,80%,50%,0.05)_50%,transparent_70%)]" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
-                    <ExternalLink className="text-primary/40" size={24} />
-                  </div>
-                </div>
-                {/* Hover overlay */}
-                <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <span className="text-primary font-medium text-sm flex items-center gap-2">
-                    View Project <ExternalLink size={16} />
-                  </span>
-                </div>
-              </div>
-              <div className="p-6">
-                <h3 className="font-heading text-base font-semibold mb-2">{p.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{p.desc}</p>
-              </div>
-            </motion.div>
+              {cat}
+            </button>
           ))}
         </div>
+
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={active}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            {filtered.map((p, i) => (
+              <motion.div
+                key={p.title}
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: i * 0.08 }}
+                className="glass-card hover-lift group overflow-hidden cursor-pointer"
+              >
+                <div className="relative h-48 bg-gradient-to-br from-primary/10 to-secondary overflow-hidden">
+                  <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_30%,hsl(168,80%,50%,0.05)_50%,transparent_70%)]" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+                      <ExternalLink className="text-primary/40" size={24} />
+                    </div>
+                  </div>
+                  <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <span className="text-primary font-medium text-sm flex items-center gap-2">
+                      View Project <ExternalLink size={16} />
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <span className="text-xs text-primary font-medium mb-2 inline-block">{p.category}</span>
+                  <h3 className="font-heading text-base font-semibold mb-2">{p.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{p.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );
