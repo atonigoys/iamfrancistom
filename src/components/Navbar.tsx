@@ -83,9 +83,9 @@ const Navbar = () => {
               <a
                 href="#contact"
                 onClick={() => setMobileOpen(false)}
-                className="btn-glow text-center px-5 py-2 rounded-lg bg-primary text-primary-foreground font-medium"
+                className="cta-neon text-center px-6 py-2.5 font-semibold text-primary-foreground flex items-center justify-center gap-2"
               >
-                Get in Touch
+                <span className="cta-rocket">🚀</span> Book an Automation Call
               </a>
             </div>
           </motion.div>
