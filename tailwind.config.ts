@@ -92,6 +92,12 @@ export default {
           "0%": { transform: "translateX(0%)" },
           "100%": { transform: "translateX(-50%)" },
         },
+        scan: {
+          "0%": { left: "-120px", opacity: "0" },
+          "10%": { opacity: "1" },
+          "90%": { opacity: "1" },
+          "100%": { left: "100%", opacity: "0" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -100,6 +106,7 @@ export default {
         "fade-in": "fade-in 0.6s ease-out forwards",
         "pulse-glow": "pulse-glow 3s ease-in-out infinite",
         marquee: "marquee 30s linear infinite",
+        scan: "scan 4s ease-in-out infinite",
       },
     },
   },
