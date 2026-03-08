@@ -51,7 +51,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15 }}
-          className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6"
+          className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 text-foreground drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
         >
           AI-Powered{" "}
           <span className="gradient-text">Automation</span>{" "}
