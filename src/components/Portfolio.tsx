@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, DollarSign, Clock, ZoomIn, ZoomOut, X } from "lucide-react";
+import { ExternalLink, DollarSign, Clock, X } from "lucide-react";
 import { createPortal } from "react-dom";
 
 const categories = ["All", "Zapier", "Make", "n8n", "GoHighLevel"] as const;
@@ -42,21 +42,6 @@ const projects: Project[] = [
 
 const DetailedCard = ({ p, i }: { p: Project; i: number }) => {
   const [imageOpen, setImageOpen] = useState(false);
-  const [zoom, setZoom] = useState(1);
-  const [isDragging, setIsDragging] = useState(false);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
-
-  const handleMouseDown = (e: React.MouseEvent) => {
-    if (zoom <= 1) return;
-    setIsDragging(true);
-    setDragStart({ x: e.clientX - position.x, y: e.clientY - position.y });
-  };
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging) return;
-    setPosition({ x: e.clientX - dragStart.x, y: e.clientY - dragStart.y });
-  };
-  const handleMouseUp = () => setIsDragging(false);
 
   return (
     <>
@@ -124,48 +109,24 @@ const DetailedCard = ({ p, i }: { p: Project; i: number }) => {
   </motion.div>
 
   {imageOpen && createPortal(
-    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center" onClick={() => { setImageOpen(false); setZoom(1); setPosition({ x: 0, y: 0 }); }}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center" onClick={() => setImageOpen(false)}>
       <div className="absolute inset-0 bg-black/80" />
       <div
         className="relative z-10 max-w-5xl w-[95vw] p-2 bg-background border border-border rounded-lg"
         onClick={(e) => e.stopPropagation()}
       >
         <button
-          onClick={() => { setImageOpen(false); setZoom(1); setPosition({ x: 0, y: 0 }); }}
+          onClick={() => setImageOpen(false)}
           className="absolute right-4 top-4 z-20 rounded-sm opacity-70 hover:opacity-100 transition-opacity"
         >
           <X className="h-4 w-4" />
         </button>
-        <div
-          className="relative overflow-hidden max-h-[85vh] rounded-lg"
-          style={{ cursor: zoom > 1 ? (isDragging ? 'grabbing' : 'grab') : 'default' }}
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseUp}
-        >
+        <div className="overflow-auto max-h-[85vh] rounded-lg">
           <img
             src={p.image}
             alt={p.title}
-            className={`w-full h-auto rounded-lg select-none ${isDragging ? '' : ''}`}
-            draggable={false}
-            style={{ transform: `scale(${zoom}) translate(${position.x / zoom}px, ${position.y / zoom}px)`, transformOrigin: 'center center' }}
+            className="w-full h-auto rounded-lg"
           />
-        </div>
-        <div className="flex items-center justify-center gap-3 pt-2">
-          <button
-            onClick={() => { setZoom((z) => { const nz = Math.max(0.5, z - 0.25); if (nz <= 1) setPosition({ x: 0, y: 0 }); return nz; }); }}
-            className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-secondary border border-border/30 text-sm font-medium hover:bg-secondary/80 transition-colors"
-          >
-            <ZoomOut size={16} /> Zoom Out
-          </button>
-          <span className="text-sm text-muted-foreground min-w-[4ch] text-center">{Math.round(zoom * 100)}%</span>
-          <button
-            onClick={() => setZoom((z) => Math.min(3, z + 0.25))}
-            className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-secondary border border-border/30 text-sm font-medium hover:bg-secondary/80 transition-colors"
-          >
-            <ZoomIn size={16} /> Zoom In
-          </button>
         </div>
       </div>
     </div>,
