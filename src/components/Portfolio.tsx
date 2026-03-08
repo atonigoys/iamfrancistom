@@ -237,9 +237,9 @@ const DetailedCard = ({ p, i, compact = false }: { p: Project; i: number; compac
           </div>
       {/* Content */}
       <div className="p-6 md:p-8 flex flex-col justify-center">
-        <span className="text-xs text-foreground/60 font-medium tracking-widest uppercase mb-2">{p.tag}</span>
-        <h3 className="font-heading text-xl font-bold mb-3 text-foreground">{p.title}</h3>
-        <p className="text-foreground/70 text-sm leading-relaxed mb-5">{p.desc}</p>
+        <span className="text-xs text-foreground/40 group-hover:text-foreground/70 font-medium tracking-widest uppercase mb-2 transition-colors duration-300">{p.tag}</span>
+        <h3 className="font-heading text-xl font-bold mb-3 text-foreground/70 group-hover:text-foreground transition-colors duration-300">{p.title}</h3>
+        <p className="text-foreground/40 group-hover:text-foreground/80 text-sm leading-relaxed mb-5 transition-colors duration-300">{p.desc}</p>
 
         {p.results && (
           <div className="mb-5">
