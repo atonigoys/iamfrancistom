@@ -109,6 +109,21 @@ const projects: Project[] = [
     techStack: ["n8n", "OpenAI", "Slack", "Google Drive", "Gmail"],
   },
   {
+    title: "RAG AI Knowledge Base Agent",
+    desc: "AI-powered Retrieval-Augmented Generation (RAG) system that automatically ingests documents from cloud storage, converts them into vector embeddings, and enables intelligent AI responses through semantic search. The workflow syncs files from Google Drive and updates the vector database in real time to ensure the AI agent always uses the latest knowledge.",
+    category: "n8n",
+    tag: "AI & KNOWLEDGE BASE • n8n",
+    image: "/images/portfolio/rag-knowledge-base.png",
+    results: [
+      "Intelligent document-aware responses",
+      "Automatic knowledge base synchronization",
+      "Semantic vector search for accurate retrieval",
+      "Real-time document updates from cloud storage",
+    ],
+    savings: { money: "$2,500/mo saved", time: "35 hrs/mo saved" },
+    techStack: ["n8n", "OpenRouter", "Google Drive", "Supabase Vector Store", "Google Vertex AI"],
+  },
+  {
     title: "AI ASMR Video Creator",
     desc: "Automated AI-powered system that generates relaxing ASMR-style videos by creating scripts, producing visuals and audio through AI tools, and automatically rendering and publishing ready-to-watch content for social media platforms.",
     category: "n8n",
