@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
-import { Award, ExternalLink } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Award, ExternalLink, X } from "lucide-react";
 
 const certificates = [
   {
