@@ -3,10 +3,11 @@ import { Award, ExternalLink } from "lucide-react";
 
 const certificates = [
   {
-    title: "Zapier Certified Expert",
-    issuer: "Zapier",
-    date: "2024",
+    title: "No Code Automation with Zapier",
+    issuer: "Technical Virtual Assistants PH",
+    date: "March 2026",
     icon: "/images/tools/zapier.svg",
+    certImage: "/images/certificates/zapier-cert.png",
   },
   {
     title: "Make Automation Pro",
