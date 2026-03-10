@@ -3,40 +3,28 @@ import { Award, ExternalLink } from "lucide-react";
 
 const certificates = [
   {
+    title: "Zapier Certified Expert",
+    issuer: "Zapier",
+    date: "2024",
+    icon: "/images/tools/zapier.svg",
+  },
+  {
+    title: "Make Automation Pro",
+    issuer: "Make",
+    date: "2024",
+    icon: "/images/tools/make.svg",
+  },
+  {
     title: "n8n Advanced Automation",
     issuer: "n8n",
     date: "2025",
     icon: "/images/tools/n8n.svg",
   },
   {
-    title: "Google AI Essentials",
-    issuer: "Google",
-    date: "2025",
-    icon: "/images/tools/google-ai-studio.svg",
-  },
-  {
-    title: "HubSpot Inbound Marketing",
-    issuer: "HubSpot",
-    date: "2024",
-    icon: "/images/tools/hubspot.svg",
-  },
-  {
-    title: "OpenAI API Fundamentals",
+    title: "Prompt Engineering Professional",
     issuer: "OpenAI",
-    date: "2024",
-    icon: "/images/tools/openai.svg",
-  },
-  {
-    title: "Supabase Database Management",
-    issuer: "Supabase",
     date: "2025",
-    icon: "/images/tools/supabase.svg",
-  },
-  {
-    title: "Make.com Automation Pro",
-    issuer: "Make",
-    date: "2024",
-    icon: "/images/tools/make.svg",
+    icon: "/images/tools/openai.svg",
   },
 ];
 
