@@ -139,6 +139,21 @@ const projects: Project[] = [
     techStack: ["n8n", "OpenRouter", "AI Video API", "YouTube API"],
   },
   {
+    title: "AI Receptionist",
+    desc: "Automated AI receptionist system that answers customer inquiries, manages appointment scheduling, and handles booking, rescheduling, and cancellations through voice or chat interactions integrated with Vapi, Google Calendar, and Airtable.",
+    category: "n8n",
+    tag: "VOICE AI & SCHEDULING • n8n",
+    image: "/images/portfolio/ai-receptionist.png",
+    results: [
+      "24/7 AI-powered call and chat handling",
+      "Smart calendar availability detection",
+      "Automated booking, rescheduling, and cancellations",
+      "Instant appointment confirmations",
+    ],
+    savings: { money: "$2,500/mo saved", time: "40 hrs/mo saved" },
+    techStack: ["n8n", "Vapi", "Google Calendar", "Airtable"],
+  },
+  {
     title: "DRIPTEA Milk Tea Website",
     desc: "Modern responsive website designed for a milk tea brand, featuring a visually engaging landing page, interactive menu section, and optimized user experience to showcase products and drive customer orders.",
     category: "Landing Page",
