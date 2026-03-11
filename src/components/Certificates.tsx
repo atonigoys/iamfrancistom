@@ -10,10 +10,11 @@ const certificates = [
     certImage: "/images/certificates/zapier-cert.png",
   },
   {
-    title: "Make Automation Pro",
-    issuer: "Make",
-    date: "2024",
+    title: "No Code Automation with Make.com",
+    issuer: "Technical Virtual Assistants PH",
+    date: "March 2026",
     icon: "/images/tools/make.svg",
+    certImage: "/images/certificates/make-cert.png",
   },
   {
     title: "AI Automation with n8n",
