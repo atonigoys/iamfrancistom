@@ -17,10 +17,11 @@ const certificates = [
     icon: "/images/tools/make.svg",
   },
   {
-    title: "n8n Advanced Automation",
-    issuer: "n8n",
-    date: "2025",
+    title: "AI Automation with n8n",
+    issuer: "Technical Virtual Assistants PH",
+    date: "March 2026",
     icon: "/images/tools/n8n.svg",
+    certImage: "/images/certificates/n8n-cert.png",
   },
   {
     title: "Prompt Engineering Professional",
