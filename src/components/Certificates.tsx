@@ -24,10 +24,11 @@ const certificates = [
     certImage: "/images/certificates/n8n-cert.png",
   },
   {
-    title: "Prompt Engineering Professional",
-    issuer: "OpenAI",
-    date: "2025",
+    title: "Prompt Engineering",
+    issuer: "Technical Virtual Assistants PH",
+    date: "March 2026",
     icon: "/images/tools/openai.svg",
+    certImage: "/images/certificates/prompt-eng-cert.png",
   },
 ];
 
