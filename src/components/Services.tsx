@@ -1,4 +1,3 @@
-import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Bot, Plug, MessageSquare, Settings, Brain, Rocket } from "lucide-react";
 
@@ -21,99 +20,15 @@ const cardVariants = {
   }),
 };
 
-const Particles = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    let animationId: number;
-
-    const particles: { x: number; y: number; size: number; speedX: number; speedY: number; opacity: number }[] = [];
-
-    const resize = () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-    };
-    resize();
-    window.addEventListener("resize", resize);
-
-    // Create particles
-    for (let i = 0; i < 30; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: 2 + Math.random() * 4,
-        speedX: (Math.random() - 0.5) * 0.4,
-        speedY: (Math.random() - 0.5) * 0.4,
-        opacity: Math.random() * 0.2,
-      });
-    }
-
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach((p) => {
-        p.x += p.speedX;
-        p.y += p.speedY;
-        if (p.x < 0) p.x = canvas.width;
-        if (p.x > canvas.width) p.x = 0;
-        if (p.y < 0) p.y = canvas.height;
-        if (p.y > canvas.height) p.y = 0;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size / 2, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(0,255,156,${p.opacity})`;
-        ctx.fill();
-      });
-      animationId = requestAnimationFrame(animate);
-    };
-    animate();
-
-    return () => {
-      cancelAnimationFrame(animationId);
-      window.removeEventListener("resize", resize);
-    };
-  }, []);
-
-  return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none z-[1]" />;
-};
-
 const Services = () => {
   return (
-    <section
-      id="services"
-      className="section-padding relative overflow-hidden"
-      style={{ backgroundColor: "#050505" }}
-    >
-      {/* Grid lines */}
+    <section id="services" className="section-padding bg-secondary/30 relative overflow-hidden">
+      {/* Dotted grid pattern */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 opacity-[0.07] pointer-events-none"
         style={{
-          backgroundImage:
-            "linear-gradient(rgba(0,255,150,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,150,0.08) 1px, transparent 1px)",
-          backgroundSize: "50px 50px",
-        }}
-      />
-
-      {/* Radial glow */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: "radial-gradient(circle at center, rgba(0,255,150,0.15), transparent 60%)",
-        }}
-      />
-
-      {/* Particles */}
-      <Particles />
-
-      {/* Gradient overlay */}
-      <div
-        className="absolute inset-0 pointer-events-none z-[2]"
-        style={{
-          background: "linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.95) 100%)",
+          backgroundImage: "radial-gradient(circle, #00FF8A 1px, transparent 1px)",
+          backgroundSize: "30px 30px",
         }}
       />
 
@@ -138,7 +53,7 @@ const Services = () => {
               whileInView="visible"
               viewport={{ once: true, margin: "-80px" }}
               variants={cardVariants}
-              className="glass-card p-8 group cursor-default transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,150,0.35)]"
+              className="glass-card p-8 group cursor-default transition-all duration-300 hover-blink"
             >
               <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors text-2xl">
                 {s.emoji}
