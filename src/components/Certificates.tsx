@@ -38,7 +38,15 @@ const Certificates = () => {
 
   return (
     <>
-      <section id="certificates" className="py-20 md:py-28 px-6">
+      <section
+        id="certificates"
+        className="py-20 md:py-28 px-6 relative"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(0,255,150,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,150,0.08) 1px, transparent 1px)",
+          backgroundSize: "50px 50px",
+        }}
+      >
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
