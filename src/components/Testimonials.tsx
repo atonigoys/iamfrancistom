@@ -104,16 +104,6 @@ const Testimonials = () => {
       <FloatingParticles />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30, scale: 0.96 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="text-center mb-16"
-        >
-          <span className="text-primary text-sm font-medium tracking-widest uppercase">What Clients Say</span>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold mt-3">Testimonials</h2>
-        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {testimonials.map((t, i) => (
