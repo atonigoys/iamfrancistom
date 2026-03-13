@@ -32,8 +32,6 @@ const Index = () => {
       <NeonDivider />
       <Portfolio />
       <NeonDivider />
-      <Testimonials />
-      <NeonDivider />
       <Certificates />
       <NeonDivider />
       <Contact />
