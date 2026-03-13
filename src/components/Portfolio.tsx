@@ -154,6 +154,21 @@ const projects: Project[] = [
     techStack: ["n8n", "Vapi", "Google Calendar", "Airtable"],
   },
   {
+    title: "AI Lead Qualification & Client Notification System (Real Estate)",
+    desc: "Automated lead qualification pipeline that captures leads via webhook, extracts lead information, and uses an AI agent with OpenRouter to analyze and score prospects. High-value leads are automatically added to the CRM, notified to the sales team, and emailed instantly, while low-value leads are enrolled in an automated email nurturing sequence.",
+    category: "n8n",
+    tag: "AI LEAD QUALIFICATION • n8n",
+    image: "/images/portfolio/ai-lead-qualification.png",
+    results: [
+      "Automated lead scoring using AI",
+      "CRM contact creation and lead storage",
+      "Instant Telegram notifications for high-value leads",
+      "Automated email nurturing for low-value leads",
+    ],
+    savings: { money: "$3,000/mo saved", time: "40 hrs/mo saved" },
+    techStack: ["n8n", "Webhook", "AI Agent", "OpenRouter", "Google Sheets CRM", "Gmail", "Telegram"],
+  },
+  {
     title: "DRIPTEA Milk Tea Website",
     desc: "Modern responsive website designed for a milk tea brand, featuring a visually engaging landing page, interactive menu section, and optimized user experience to showcase products and drive customer orders.",
     category: "Landing Page",
