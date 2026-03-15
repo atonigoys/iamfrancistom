@@ -53,9 +53,9 @@ const Hero = () => {
           transition={{ duration: 0.7, delay: 0.15 }}
           className="font-heading font-bold leading-none mb-6 text-foreground drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] flex flex-col items-center gap-1"
         >
-          <span className="text-2xl sm:text-3xl md:text-4xl tracking-wide">AI-Powered</span>
-          <span className="gradient-text text-6xl sm:text-7xl md:text-8xl lg:text-9xl">Automation</span>
-          <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-foreground/80 font-semibold">for Smarter Workflows</span>
+          <span className="text-3xl sm:text-4xl md:text-5xl tracking-wide font-bold">AI-Powered</span>
+          <span className="gradient-text text-7xl sm:text-8xl md:text-9xl lg:text-[10rem]">Automation</span>
+          <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-foreground/80 font-semibold">for Smarter Workflows</span>
         </motion.h1>
 
         <motion.p
