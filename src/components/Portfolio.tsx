@@ -169,6 +169,23 @@ const projects: Project[] = [
     techStack: ["n8n", "Webhook", "AI Agent", "OpenRouter", "Google Sheets CRM", "Gmail", "Telegram"],
   },
   {
+    title: "Appointment Booking & Lead Qualification System (Dental Clinic)",
+    desc: "Automated appointment management workflow built in n8n that processes patient requests submitted through Jotform. The system automatically handles booking, cancellation, and rescheduling, checks availability in Google Calendar, and records patient appointments in Google Sheets CRM. It prevents double bookings, updates appointment statuses, and sends automatic email confirmations to patients. This workflow helps dental clinics reduce manual scheduling work and ensures all appointment requests are processed instantly and accurately.",
+    category: "n8n",
+    tag: "APPOINTMENT AUTOMATION • n8n",
+    image: "/images/portfolio/appointment-booking-dental.png",
+    results: [
+      "Prevents double bookings automatically",
+      "Handles BOOK / CANCEL / RESCHEDULE requests",
+      "Automatically creates and updates Google Calendar events",
+      "Maintains a Google Sheets appointment database",
+      "Sends automatic Gmail confirmations to patients",
+      "Ensures appointment records stay updated",
+    ],
+    savings: { money: "$1,500+/mo saved", time: "30 hrs/mo saved" },
+    techStack: ["n8n", "Jotform Webhook", "Google Calendar", "Google Sheets", "Gmail"],
+  },
+  {
     title: "DRIPTEA Milk Tea Website",
     desc: "Modern responsive website designed for a milk tea brand, featuring a visually engaging landing page, interactive menu section, and optimized user experience to showcase products and drive customer orders.",
     category: "Landing Page",
