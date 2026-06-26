@@ -23,11 +23,11 @@ const Contact = () => {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="text-center mb-12"
         >
-          <span className="text-primary text-sm font-medium tracking-widest uppercase">Get in Touch</span>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold mt-3">
+          <span className="text-primary text-sm font-semibold tracking-widest uppercase">Get in Touch</span>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold mt-3 text-foreground">
             Let's Work Together to Build Smarter AI Automation
           </h2>
-          <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
+          <p className="text-muted-foreground mt-4 max-w-xl mx-auto text-base">
             Book a free 30-minute consultation to explore how AI-powered workflows can automate tasks, connect your tools, and streamline the way you work.
           </p>
         </motion.div>
@@ -58,19 +58,19 @@ const Contact = () => {
         >
           <a
             href="mailto:sayfrancistom@gmail.com"
-            className="flex items-center gap-3 px-5 py-3 rounded-lg bg-secondary/60 border border-border/30 hover:border-primary/30 transition-colors"
+            className="flex items-center gap-3 px-5 py-3 rounded-lg bg-secondary/60 border border-border/50 hover:border-primary/40 hover:bg-secondary/80 transition-all duration-200"
           >
             <Mail size={18} className="text-primary" />
-            <span className="text-sm text-muted-foreground">sayfrancistom@gmail.com</span>
+            <span className="text-sm text-foreground/85">sayfrancistom@gmail.com</span>
           </a>
           <a
             href="https://wa.me/639541551360"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 px-5 py-3 rounded-lg bg-secondary/60 border border-border/30 hover:border-primary/30 transition-colors"
+            className="flex items-center gap-3 px-5 py-3 rounded-lg bg-secondary/60 border border-border/50 hover:border-primary/40 hover:bg-secondary/80 transition-all duration-200"
           >
             <MessageCircle size={18} className="text-primary" />
-            <span className="text-sm text-muted-foreground">+639 541 551 360</span>
+            <span className="text-sm text-foreground/85">+639 541 551 360</span>
           </a>
         </motion.div>
 

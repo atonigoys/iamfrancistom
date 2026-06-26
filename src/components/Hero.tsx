@@ -55,14 +55,14 @@ const Hero = () => {
         >
           <span className="text-3xl sm:text-4xl md:text-5xl tracking-wide font-bold">AI-Powered</span>
           <span className="gradient-text text-7xl sm:text-8xl md:text-9xl lg:text-[10rem]">Automation</span>
-          <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-foreground/80 font-semibold">for Smarter Workflows</span>
+          <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-foreground/90 font-semibold">for Smarter Workflows</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto mb-10 drop-shadow-[0_1px_6px_rgba(0,0,0,0.4)]"
+          className="text-lg md:text-xl text-foreground/90 max-w-2xl mx-auto mb-10 drop-shadow-[0_1px_6px_rgba(0,0,0,0.4)]"
         >
           I design intelligent workflows that connect apps, automate tasks, and
           streamline business operations.

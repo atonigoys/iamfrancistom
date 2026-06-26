@@ -79,6 +79,39 @@ const projects: Project[] = [
     techStack: ["Make (Integromat)", "Gmail", "Google Drive", "Google Sheets", "AI Processing"],
   },
   {
+    title: "AI HubSpot Contact Enrichment System",
+    desc: "AI-powered HubSpot contact enrichment workflow that automatically researches companies, scrapes website and LinkedIn data, analyzes business information with AI, updates HubSpot CRM properties, and notifies the sales team—eliminating manual research and improving lead quality.",
+    category: "n8n",
+    tag: "AI CRM AUTOMATION • N8N",
+    image: "/images/portfolio/ai-hubspot-enrichment.png",
+    results: [
+      "Automatically enriches every new HubSpot contact",
+      "Scrapes company websites and LinkedIn company profiles",
+      "AI extracts industry, company summary, products, and services",
+      "Updates HubSpot CRM with structured enrichment data",
+      "Sends real-time Slack notifications to the sales team",
+    ],
+    savings: { money: "95% less manual research", time: "8–12 min/contact saved" },
+    techStack: ["n8n", "OpenAI", "HubSpot", "HTTP Request", "LinkedIn", "Google Sheets", "Slack", "JavaScript"],
+  },
+  {
+    title: "AI Resume Screening & Candidate Ranking System",
+    desc: "An AI-powered recruitment workflow that automatically screens resumes, analyzes candidate qualifications against job requirements, ranks applicants based on AI scoring, and notifies hiring teams with the best-fit candidates—reducing manual screening and accelerating recruitment.",
+    category: "n8n",
+    tag: "AI HR AUTOMATION • N8N",
+    image: "/images/portfolio/ai-resume-screening.png",
+    results: [
+      "Automatically receives and processes new job applications",
+      "Extracts resume data from uploaded PDF files",
+      "AI compares candidate qualifications with job descriptions",
+      "Scores and ranks applicants based on skills and experience",
+      "Recommends interview, talent pool, or rejection decisions",
+      "Sends hiring notifications and logs screening results automatically",
+    ],
+    savings: { money: "90% less manual resume screening", time: "30+ hrs/month saved" },
+    techStack: ["n8n", "OpenAI", "Google Drive", "Gmail", "Google Sheets", "Webhook", "PDF Parser", "HTTP Request", "JavaScript"],
+  },
+  {
     title: "AI Facebook Support Agent",
     desc: "Automated AI support agent that processes incoming webhook requests from Facebook, retrieves knowledge documents, generates intelligent responses using an AI model, and returns automated replies through API integration.",
     category: "n8n",
@@ -246,26 +279,28 @@ const DetailedCard = ({ p, i, compact = false }: { p: Project; i: number; compac
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: i * 0.08 }}
-          className="bg-transparent border border-border/30 rounded-xl hover-blink group overflow-hidden cursor-pointer flex flex-col"
+          className="bg-card/60 border border-border/50 rounded-xl hover:border-primary/40 hover:shadow-[0_0_30px_-8px_rgba(0,255,138,0.25)] group overflow-hidden cursor-pointer flex flex-col transition-all duration-300"
         >
           <div
-            className="relative h-48 bg-secondary overflow-hidden cursor-zoom-in"
+            className="relative h-52 bg-secondary overflow-hidden cursor-zoom-in"
             onClick={(e) => { e.stopPropagation(); setImageOpen(true); }}
           >
             <img src={p.image} alt={p.title} decoding="sync" loading="eager" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" />
-            <div className="absolute inset-0 bg-muted/60 group-hover:bg-transparent transition-colors duration-500" />
+            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-500" />
+            <div className="absolute top-3 left-3">
+              <span className="text-[10px] font-semibold tracking-widest uppercase px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-sm text-primary border border-primary/30">{p.tag}</span>
+            </div>
           </div>
           <div className="p-5 flex flex-col flex-1">
-            <span className="text-xs text-foreground/40 group-hover:text-foreground/70 font-medium tracking-widest uppercase mb-1 transition-colors duration-300">{p.tag}</span>
-            <h3 className="font-heading text-lg font-bold mb-2 text-foreground/70 group-hover:text-foreground transition-colors duration-300">{p.title}</h3>
-            <p className="text-foreground/40 group-hover:text-foreground/80 text-sm leading-relaxed mb-4 line-clamp-2 transition-colors duration-300">{p.desc}</p>
+            <h3 className="font-heading text-base font-bold mb-2 text-foreground">{p.title}</h3>
+            <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-3">{p.desc}</p>
             {p.savings && (
-              <div className="flex gap-3 mt-auto">
-                <span className="flex items-center gap-1.5 text-xs font-medium bg-secondary/80 px-2.5 py-1 rounded-full border border-border/30">
-                  <DollarSign size={12} className="text-primary" /> {p.savings.money}
+              <div className="flex flex-wrap gap-2 mt-auto">
+                <span className="flex items-center gap-1.5 text-xs font-semibold bg-primary/10 text-primary px-2.5 py-1 rounded-full border border-primary/20">
+                  <DollarSign size={11} /> {p.savings.money}
                 </span>
-                <span className="flex items-center gap-1.5 text-xs font-medium bg-secondary/80 px-2.5 py-1 rounded-full border border-border/30">
-                  <Clock size={12} className="text-primary" /> {p.savings.time}
+                <span className="flex items-center gap-1.5 text-xs font-semibold bg-secondary px-2.5 py-1 rounded-full border border-border/40 text-foreground/80">
+                  <Clock size={11} className="text-primary" /> {p.savings.time}
                 </span>
               </div>
             )}
@@ -298,9 +333,9 @@ const DetailedCard = ({ p, i, compact = false }: { p: Project; i: number; compac
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: i * 0.08 }}
-        className="bg-transparent border border-border/30 rounded-xl hover-blink group overflow-hidden cursor-pointer col-span-1 sm:col-span-2 lg:col-span-3"
+        className="bg-card/60 border border-border/50 rounded-xl hover:border-primary/40 hover:shadow-[0_0_40px_-10px_rgba(0,255,138,0.3)] group overflow-hidden cursor-pointer col-span-1 sm:col-span-2 lg:col-span-3 transition-all duration-300"
       >
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 min-h-[400px]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 min-h-[420px]">
           {/* Image */}
           <div
             className="relative h-64 lg:h-full bg-secondary overflow-hidden cursor-zoom-in"
@@ -313,51 +348,54 @@ const DetailedCard = ({ p, i, compact = false }: { p: Project; i: number; compac
               loading="eager"
               className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
             />
-            <div className="absolute inset-0 bg-muted/60 group-hover:bg-transparent transition-colors duration-500" />
-          </div>
-      {/* Content */}
-      <div className="p-6 md:p-8 flex flex-col justify-center">
-        <span className="text-xs text-foreground/40 group-hover:text-foreground/70 font-medium tracking-widest uppercase mb-2 transition-colors duration-300">{p.tag}</span>
-        <h3 className="font-heading text-xl font-bold mb-3 text-foreground/70 group-hover:text-foreground transition-colors duration-300">{p.title}</h3>
-        <p className="text-foreground/40 group-hover:text-foreground/80 text-sm leading-relaxed mb-5 transition-colors duration-300">{p.desc}</p>
-
-        {p.results && (
-          <div className="mb-5">
-            <h4 className="text-sm font-semibold mb-2">Key Results</h4>
-            <ul className="space-y-1.5">
-              {p.results.map((r) => (
-                <li key={r} className="text-foreground/40 group-hover:text-foreground/80 text-sm flex items-start gap-2 transition-colors duration-300">
-                  <span className="text-primary mt-0.5">✔</span> {r}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {p.savings && (
-          <div className="flex gap-4 mb-5">
-            <span className="flex items-center gap-1.5 text-sm font-medium bg-secondary/80 px-3 py-1.5 rounded-full border border-border/30">
-              <DollarSign size={14} className="text-primary" /> {p.savings.money}
-            </span>
-            <span className="flex items-center gap-1.5 text-sm font-medium bg-secondary/80 px-3 py-1.5 rounded-full border border-border/30">
-              <Clock size={14} className="text-primary" /> {p.savings.time}
-            </span>
-          </div>
-        )}
-
-        {p.techStack && (
-          <div>
-            <h4 className="text-sm font-semibold mb-2">Tech Stack</h4>
-            <div className="flex flex-wrap gap-2">
-              {p.techStack.map((t) => (
-                <span key={t} className="text-xs bg-secondary/80 text-muted-foreground px-3 py-1 rounded-full border border-border/30">{t}</span>
-              ))}
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/5 transition-colors duration-500" />
+            <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span className="text-xs text-white/80 bg-black/60 backdrop-blur-sm px-2 py-1 rounded">Click to enlarge</span>
             </div>
           </div>
-        )}
-      </div>
-    </div>
-  </motion.div>
+          {/* Content */}
+          <div className="p-7 md:p-9 flex flex-col justify-center">
+            <span className="text-xs text-primary font-semibold tracking-widest uppercase mb-2">{p.tag}</span>
+            <h3 className="font-heading text-xl font-bold mb-3 text-foreground">{p.title}</h3>
+            <p className="text-muted-foreground text-sm leading-relaxed mb-5">{p.desc}</p>
+
+            {p.results && (
+              <div className="mb-5">
+                <h4 className="text-sm font-bold mb-3 text-foreground">Key Results</h4>
+                <ul className="space-y-2">
+                  {p.results.map((r) => (
+                    <li key={r} className="text-muted-foreground text-sm flex items-start gap-2">
+                      <span className="text-primary mt-0.5 shrink-0">✔</span> {r}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {p.savings && (
+              <div className="flex flex-wrap gap-3 mb-5">
+                <span className="flex items-center gap-1.5 text-sm font-semibold bg-primary/10 text-primary px-3 py-1.5 rounded-full border border-primary/25">
+                  <DollarSign size={13} /> {p.savings.money}
+                </span>
+                <span className="flex items-center gap-1.5 text-sm font-medium bg-secondary px-3 py-1.5 rounded-full border border-border/50 text-foreground/85">
+                  <Clock size={13} className="text-primary" /> {p.savings.time}
+                </span>
+              </div>
+            )}
+
+            {p.techStack && (
+              <div>
+                <h4 className="text-sm font-bold mb-2.5 text-foreground">Tech Stack</h4>
+                <div className="flex flex-wrap gap-2">
+                  {p.techStack.map((t) => (
+                    <span key={t} className="text-xs bg-secondary text-muted-foreground px-3 py-1 rounded-full border border-border/50 hover:border-primary/30 hover:text-foreground transition-colors duration-200">{t}</span>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </motion.div>
 
   {imageOpen && createPortal(
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={() => setImageOpen(false)}>
@@ -476,9 +514,9 @@ const Portfolio = () => {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="text-center mb-16"
         >
-          <span className="text-primary text-sm font-medium tracking-widest uppercase">Portfolio</span>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold mt-3">Previous Works</h2>
-          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">AI-powered workflows and integrations designed to connect tools, automate processes, and improve productivity.</p>
+          <span className="text-primary text-sm font-semibold tracking-widest uppercase">Portfolio</span>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold mt-3 text-foreground">Previous Works</h2>
+          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto text-base">AI-powered workflows and integrations designed to connect tools, automate processes, and improve productivity.</p>
         </motion.div>
 
         {/* Tabs */}

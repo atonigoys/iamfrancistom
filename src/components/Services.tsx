@@ -23,7 +23,6 @@ const cardVariants = {
 const Services = () => {
   return (
     <section id="services" className="section-padding bg-secondary/30 relative overflow-hidden">
-      {/* Dotted grid pattern */}
       <div
         className="absolute inset-0 opacity-[0.07] pointer-events-none"
         style={{
@@ -40,8 +39,9 @@ const Services = () => {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="text-center mb-16"
         >
-          <span className="text-primary text-sm font-medium tracking-widest uppercase">What I Do</span>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold mt-3">Services</h2>
+          <span className="text-primary text-sm font-semibold tracking-widest uppercase">What I Do</span>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold mt-3 text-foreground">Services</h2>
+          <p className="text-muted-foreground mt-4 max-w-xl mx-auto text-base">Intelligent automation solutions built to save time, reduce costs, and scale your operations.</p>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -53,12 +53,15 @@ const Services = () => {
               whileInView="visible"
               viewport={{ once: true, margin: "-80px" }}
               variants={cardVariants}
-              className="glass-card p-8 group cursor-default transition-all duration-300 hover-blink"
+              className="relative bg-card/60 backdrop-blur-sm border border-border/60 rounded-xl p-7 group cursor-default transition-all duration-300 hover:border-primary/40 hover:bg-card/80 hover:shadow-[0_0_30px_-8px_rgba(0,255,138,0.25)]"
             >
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors text-2xl">
+              {/* Top accent line on hover */}
+              <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-primary/0 to-transparent group-hover:via-primary/50 transition-all duration-500" />
+
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 flex items-center justify-center mb-5 group-hover:from-primary/30 group-hover:border-primary/40 transition-all duration-300 text-2xl">
                 {s.emoji}
               </div>
-              <h3 className="font-heading text-lg font-semibold mb-2">{s.title}</h3>
+              <h3 className="font-heading text-base font-bold mb-3 text-foreground group-hover:text-primary transition-colors duration-300">{s.title}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">{s.desc}</p>
             </motion.div>
           ))}
