@@ -1,143 +1,151 @@
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronDown } from "lucide-react";
-import NeuralNetworkBackground from "./NeuralNetworkBackground";
+import { ArrowRight, CalendarCheck } from "lucide-react";
 
 const tools = [
-  { name: "ChatGPT", logo: "/images/tools/chatgpt.svg" },
-  { name: "OpenAI", logo: "/images/tools/openai.svg" },
-  { name: "Zapier", logo: "/images/tools/zapier.svg" },
   { name: "n8n", logo: "/images/tools/n8n.svg" },
   { name: "Make", logo: "/images/tools/make.svg" },
-  { name: "Google AI Studio", logo: "/images/tools/google-ai-studio.svg" },
+  { name: "Zapier", logo: "/images/tools/zapier.svg" },
+  { name: "OpenAI", logo: "/images/tools/openai.svg" },
+  { name: "ChatGPT", logo: "/images/tools/chatgpt.svg" },
   { name: "Google Gemini", logo: "/images/tools/google-gemini.svg" },
+  { name: "OpenRouter", logo: "/images/tools/openrouter.png" },
+  { name: "Grok", logo: "/images/tools/grok.png" },
+  { name: "Supabase", logo: "/images/tools/supabase.svg" },
   { name: "Airtable", logo: "/images/tools/airtable.svg" },
-  { name: "Lovable", logo: "/images/tools/lovable.png" },
-  { name: "Google Docs", logo: "/images/tools/google-docs.svg" },
-  { name: "Google Sheets", logo: "/images/tools/google-sheets.svg" },
+  { name: "HubSpot", logo: "/images/tools/hubspot.svg" },
+  { name: "GoHighLevel", logo: "/images/tools/gohighlevel.png" },
   { name: "Slack", logo: "/images/tools/slack.svg" },
   { name: "Asana", logo: "/images/tools/asana.svg" },
   { name: "Xero", logo: "/images/tools/xero.svg" },
-  { name: "Vercel", logo: "/images/tools/vercel.svg" },
-  { name: "GitHub", logo: "/images/tools/github.svg" },
-  { name: "GoHighLevel", logo: "/images/tools/gohighlevel.png" },
-  { name: "OpenRouter", logo: "/images/tools/openrouter.png" },
-  { name: "HubSpot", logo: "/images/tools/hubspot.svg" },
   { name: "Vapi", logo: "/images/tools/vapi.png" },
+  { name: "Google Sheets", logo: "/images/tools/google-sheets.svg" },
+  { name: "Google Docs", logo: "/images/tools/google-docs.svg" },
+  { name: "Google AI Studio", logo: "/images/tools/google-ai-studio.svg" },
   { name: "Docker", logo: "/images/tools/docker.svg" },
-  { name: "Supabase", logo: "/images/tools/supabase.svg" },
-  { name: "Grok", logo: "/images/tools/grok.png" },
+  { name: "GitHub", logo: "/images/tools/github.svg" },
+  { name: "Vercel", logo: "/images/tools/vercel.svg" },
+  { name: "Lovable", logo: "/images/tools/lovable.png" },
 ];
+
+const rise = {
+  hidden: { opacity: 0, y: 20 },
+  show: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, delay: i * 0.09, ease: [0.16, 1, 0.3, 1] as const },
+  }),
+};
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center section-padding pt-28 overflow-hidden">
-      {/* Neural network background */}
-      <NeuralNetworkBackground />
-      {/* Subtle overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/80" />
+    <section className="relative isolate overflow-hidden pt-32 pb-16 px-5 sm:px-6 md:pt-40">
+      {/* Static structural background. The old 80-node animated canvas ran a
+          per-frame O(n²) distance check behind this fold — this costs nothing. */}
+      <div aria-hidden className="absolute inset-0 -z-10 grid-field mask-fade opacity-70" />
+      <div
+        aria-hidden
+        className="absolute left-1/2 top-[-14rem] -z-10 h-[38rem] w-[62rem] -translate-x-1/2 rounded-full opacity-[0.16] blur-[120px]"
+        style={{ background: "radial-gradient(circle, hsl(var(--brand)) 0%, transparent 65%)" }}
+      />
 
-      <div className="relative max-w-4xl mx-auto text-center flex-1 flex flex-col justify-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-        >
-          <span className="inline-block mb-6 px-4 py-1.5 rounded-full border border-primary/50 text-primary text-sm font-medium tracking-wide bg-primary/10 shadow-[0_0_15px_rgba(0,255,138,0.3),0_0_30px_rgba(0,255,138,0.15)]">
-            AI Automation Specialist
+      <div className="section-shell flex flex-col items-center text-center">
+        <motion.div variants={rise} initial="hidden" animate="show" custom={0}>
+          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface-1 px-3.5 py-1.5 font-mono text-[11px] tracking-wide text-muted-foreground">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-brand-text opacity-60" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand-text" />
+            </span>
+            Available for new automation projects
           </span>
         </motion.div>
 
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.15 }}
-          className="font-heading font-bold leading-none mb-6 text-foreground drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] flex flex-col items-center gap-1"
+          variants={rise}
+          initial="hidden"
+          animate="show"
+          custom={1}
+          className="mt-7 max-w-4xl text-[2.1rem] font-semibold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl lg:text-[4.1rem]"
         >
-          <span className="text-3xl sm:text-4xl md:text-5xl tracking-wide font-bold">AI-Powered</span>
-          <span className="gradient-text text-7xl sm:text-8xl md:text-9xl lg:text-[10rem]">Automation</span>
-          <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-foreground/90 font-semibold">for Smarter Workflows</span>
+          Your team is doing work
+          <br className="hidden sm:block" />{" "}
+          <span className="text-brand-text">a system</span> should be doing.
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          className="text-lg md:text-xl text-foreground/90 max-w-2xl mx-auto mb-10 drop-shadow-[0_1px_6px_rgba(0,0,0,0.4)]"
+          variants={rise}
+          initial="hidden"
+          animate="show"
+          custom={2}
+          className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
         >
-          I design intelligent workflows that connect apps, automate tasks, and
-          streamline business operations.
+          I build that system. AI automation for lead qualification, onboarding, support
+          and reporting — shipped in n8n, Make and Zapier, documented and handed over.
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.45 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          variants={rise}
+          initial="hidden"
+          animate="show"
+          custom={3}
+          className="mt-9 flex w-full flex-col items-center justify-center gap-3 sm:w-auto sm:flex-row"
         >
-          <a
-            href="#portfolio"
-            className="btn-glow flex items-center gap-2 px-7 py-3.5 rounded-lg bg-primary text-primary-foreground font-semibold text-base"
-          >
-            View My Work
-            <ArrowRight size={18} />
+          <a href="#contact" className="btn-primary w-full sm:w-auto">
+            <CalendarCheck size={17} aria-hidden />
+            Book a free automation audit
           </a>
-          <a
-            href="#contact"
-            className="flex items-center gap-2 px-7 py-3.5 rounded-lg border border-border text-foreground font-semibold text-base hover:border-primary/50 hover:text-primary transition-all duration-300"
-          >
-            Contact Me
+          <a href="#work" className="btn-secondary group w-full sm:w-auto">
+            See the work
+            <ArrowRight
+              size={16}
+              aria-hidden
+              className="transition-transform duration-200 group-hover:translate-x-0.5"
+            />
           </a>
         </motion.div>
       </div>
 
-      {/* Tools marquee */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.8, duration: 0.8 }}
-        className="relative w-full mt-16 mb-16"
-      >
-        <p className="text-center text-xs text-muted-foreground uppercase tracking-widest mb-6">
-          Tools I Work With
+      {/* Tool strip. Logos keep their own brand colours now — the previous
+          `brightness-0 invert` flattened every one of them to identical grey.
+          Deliberately not motion-wrapped: it's decorative, and gating it behind
+          a JS entry animation only means it can fail to appear at all. */}
+      <div className="marquee-host relative mt-16 w-full">
+        <p className="mb-6 text-center font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground/70">
+          Platforms I build on
         </p>
-        <div className="relative overflow-hidden">
-          {/* Fade edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-background to-transparent z-10" />
-          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-background to-transparent z-10" />
-          {/* Scrolling strip */}
-          <div className="flex animate-marquee w-max">
+        <div className="marquee-mask overflow-hidden">
+          <ul className="marquee-track flex w-max items-center gap-3">
             {[...tools, ...tools].map((tool, i) => (
-              <div
+              <li
                 key={`${tool.name}-${i}`}
-                className="flex items-center gap-2.5 mx-4 px-4 py-2.5 rounded-lg bg-secondary/60 border border-border/30 hover:border-primary/30 transition-colors shrink-0"
+                aria-hidden={i >= tools.length}
+                className="group/tool flex shrink-0 items-center gap-2.5 rounded-lg border border-border
+                           bg-surface-1 px-4 py-2.5 transition-colors duration-200
+                           hover:border-border-strong hover:bg-surface-2"
               >
-                {tool.logo ? (
-                  <img
-                    src={tool.logo}
-                    alt={tool.name}
-                    className="w-5 h-5 brightness-0 invert opacity-70"
-                  />
-                ) : (
-                  <span className="w-5 h-5 rounded bg-primary/20 flex items-center justify-center text-[10px] font-bold text-primary">
-                    {tool.name.charAt(0)}
-                  </span>
-                )}
-                <span className="text-sm text-muted-foreground whitespace-nowrap">{tool.name}</span>
-              </div>
+                {/* White silhouette at rest so 23 competing brand palettes read as
+                    one calm strip — and so dark marks (Vercel, GitHub, Xero) stay
+                    legible on a dark background. Hover pays out the real colour. */}
+                <img
+                  src={tool.logo}
+                  alt=""
+                  width={18}
+                  height={18}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-[18px] w-[18px] object-contain opacity-40 brightness-0 invert
+                             transition duration-200 ease-out
+                             group-hover/tool:opacity-100 group-hover/tool:brightness-100
+                             group-hover/tool:invert-0"
+                />
+                <span className="whitespace-nowrap font-mono text-xs text-muted-foreground
+                                 transition-colors duration-200 group-hover/tool:text-foreground">
+                  {tool.name}
+                </span>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
-      </motion.div>
-
-      <motion.a
-        href="#services"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.6 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-primary transition-colors animate-bounce"
-      >
-        <ChevronDown size={28} />
-      </motion.a>
+      </div>
     </section>
   );
 };

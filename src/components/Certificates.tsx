@@ -1,14 +1,28 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Award, X } from "lucide-react";
+import { Award } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import GlassCard from "./GlassCard";
 
-const certificates = [
+interface Certificate {
+  title: string;
+  issuer: string;
+  date: string;
+  icon: string;
+  certImage: string;
+}
+
+const certificates: Certificate[] = [
   {
-    title: "No Code Automation with Zapier",
+    title: "AI Automation with n8n",
     issuer: "Technical Virtual Assistants PH",
     date: "March 2026",
-    icon: "/images/tools/zapier.svg",
-    certImage: "/images/certificates/zapier-cert.png",
+    icon: "/images/tools/n8n.svg",
+    certImage: "/images/certificates/n8n-cert.png",
   },
   {
     title: "No Code Automation with Make.com",
@@ -18,11 +32,11 @@ const certificates = [
     certImage: "/images/certificates/make-cert.png",
   },
   {
-    title: "AI Automation with n8n",
+    title: "No Code Automation with Zapier",
     issuer: "Technical Virtual Assistants PH",
     date: "March 2026",
-    icon: "/images/tools/n8n.svg",
-    certImage: "/images/certificates/n8n-cert.png",
+    icon: "/images/tools/zapier.svg",
+    certImage: "/images/certificates/zapier-cert.png",
   },
   {
     title: "Prompt Engineering",
@@ -34,107 +48,82 @@ const certificates = [
 ];
 
 const Certificates = () => {
-  const [viewImage, setViewImage] = useState<string | null>(null);
+  const [open, setOpen] = useState<Certificate | null>(null);
 
   return (
     <>
-      <section
-        id="certificates"
-        className="py-20 md:py-28 px-6 relative"
-        style={{
-          background: "radial-gradient(circle at center, rgba(0,255,150,0.12), transparent 60%)",
-        }}
-      >
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-14"
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm font-medium mb-4">
-              <Award size={16} />
-              Professional Certifications
-            </div>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
-              Certificates & <span className="text-primary">Credentials</span>
-            </h2>
-            <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
-              Verified qualifications from leading platforms and technology providers.
-            </p>
-          </motion.div>
+      <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-brand-text">
+        Certifications
+      </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            {certificates.map((cert, i) => (
-              <motion.div
-                key={cert.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
-                onClick={() => cert.certImage && setViewImage(cert.certImage)}
-                className="group cursor-pointer rounded-xl border border-border bg-card/60 backdrop-blur-sm p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-[0_0_20px_-6px_hsl(var(--primary)/0.15)]"
-              >
-                <div className="flex items-start gap-5">
-                  <div className="w-14 h-14 rounded-lg bg-secondary flex items-center justify-center shrink-0 overflow-hidden">
-                    <img
-                      src={cert.icon}
-                      alt={cert.issuer}
-                      className="w-8 h-8 object-contain"
-                    />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-heading font-semibold text-foreground text-base leading-tight mb-1.5 group-hover:text-primary transition-colors">
-                      {cert.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm">
-                      {cert.issuer} • {cert.date}
-                    </p>
-                  </div>
-                  <Award size={18} className="text-primary/40 group-hover:text-primary transition-colors shrink-0 mt-1" />
-                </div>
-                {cert.certImage && (
-                  <p className="text-xs text-muted-foreground/60 mt-3 text-right">Click to view certificate</p>
-                )}
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Certificate Image Modal */}
-      <AnimatePresence>
-        {viewImage && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-background/80 backdrop-blur-sm flex items-center justify-center p-6"
-            onClick={() => setViewImage(null)}
-          >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="relative max-w-4xl w-full"
-              onClick={(e) => e.stopPropagation()}
+      <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+        {certificates.map((c) => (
+          <li key={c.title}>
+            <button
+              type="button"
+              onClick={() => setOpen(c)}
+              aria-label={`View certificate: ${c.title}`}
+              className="block w-full appearance-none border-0 bg-transparent p-0 text-left"
             >
-              <button
-                onClick={() => setViewImage(null)}
-                className="absolute -top-3 -right-3 z-10 w-8 h-8 rounded-full bg-card border border-border flex items-center justify-center text-foreground hover:text-primary transition-colors"
-              >
-                <X size={16} />
-              </button>
+              <GlassCard shine className="p-3.5">
+                <span className="cert-badge" aria-hidden>
+                  <Award size={11} />
+                </span>
+
+                <div className="flex items-center gap-3 pr-5">
+                  <img
+                    src={c.icon}
+                    alt=""
+                    width={18}
+                    height={18}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-[18px] w-[18px] shrink-0 object-contain opacity-40 brightness-0 invert
+                               transition duration-200 ease-out
+                               [.gc-tilt:hover_&]:opacity-100 [.gc-tilt:hover_&]:brightness-100
+                               [.gc-tilt:hover_&]:invert-0"
+                  />
+                  <span className="min-w-0">
+                    <span className="gc-title block truncate text-[13px] font-semibold">
+                      {c.title}
+                    </span>
+                    <span className="mt-0.5 block truncate font-mono text-[10px] text-muted-foreground">
+                      {c.issuer} · {c.date}
+                    </span>
+                    <span className="cert-verified mt-1 block font-mono text-[10px] uppercase tracking-wider text-brand-text">
+                      ✓ Verified Certification
+                    </span>
+                  </span>
+                </div>
+              </GlassCard>
+            </button>
+          </li>
+        ))}
+      </ul>
+
+      <Dialog open={!!open} onOpenChange={(v) => !v && setOpen(null)}>
+        <DialogContent className="max-h-[90vh] max-w-2xl overflow-y-auto border-border bg-surface-1">
+          {open && (
+            <>
+              <DialogHeader className="text-left">
+                <DialogTitle className="font-display text-base font-semibold">
+                  {open.title}
+                </DialogTitle>
+                <p className="mt-1 font-mono text-[11px] text-muted-foreground">
+                  {open.issuer} · {open.date}
+                </p>
+              </DialogHeader>
               <img
-                src={viewImage}
-                alt="Certificate"
-                className="w-full rounded-xl border border-border shadow-2xl"
+                src={open.certImage}
+                alt={`${open.title} certificate issued by ${open.issuer}`}
+                loading="lazy"
+                decoding="async"
+                className="mt-4 w-full rounded-lg border border-border"
               />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </>
   );
 };

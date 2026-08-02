@@ -2,41 +2,38 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import Portfolio from "@/components/Portfolio";
-
+import Process from "@/components/Process";
+import About from "@/components/About";
+import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
-const NeonDivider = () => (
-  <div className="relative w-full h-[4px] overflow-hidden">
-    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/70 to-transparent" />
-    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary to-transparent blur-[6px] opacity-60 animate-pulse-glow" />
-    <div className="absolute -top-[8px] -bottom-[8px] inset-x-0 bg-gradient-to-r from-transparent via-primary/40 to-transparent blur-[16px] animate-pulse-glow" />
-    <div
-      className="absolute top-0 bottom-0 w-[120px] animate-scan"
-      style={{
-        background: "linear-gradient(90deg, transparent, hsl(var(--primary)), transparent)",
-        filter: "blur(2px)",
-        opacity: 0.9,
-      }}
-    />
+/** Replaces the four animated scanning NeonDividers. A section boundary
+ *  shouldn't be competing for attention with the section. */
+const Rule = () => (
+  <div className="section-shell px-5 sm:px-6">
+    <div aria-hidden className="rule-fade" />
   </div>
 );
 
-const Index = () => {
-  return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
+const Index = () => (
+  <div className="min-h-screen bg-background">
+    <Navbar />
+    <main>
       <Hero />
-      <NeonDivider />
+      <Rule />
       <Services />
-      <NeonDivider />
       <Portfolio />
-      <NeonDivider />
+      <Rule />
+      <Process />
+      <Rule />
+      <About />
+      <Experience />
+      <Rule />
       <Contact />
-      <NeonDivider />
-      <Footer />
-    </div>
-  );
-};
+    </main>
+    <Footer />
+  </div>
+);
 
 export default Index;

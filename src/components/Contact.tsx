@@ -1,104 +1,109 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, MessageCircle, Twitter, Linkedin, Github } from "lucide-react";
+import { Mail, MessageCircle, CalendarCheck } from "lucide-react";
 
-const Contact = () => {
-  return (
-    <section id="contact" className="section-padding relative overflow-hidden bg-background">
-      {/* Grid background */}
-      <div
-        className="absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage: "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
+const EMAIL = "sayfrancistom@gmail.com";
+const CALENDLY = "https://calendly.com/sayfrancistom/30min";
+
+/** Calendly facade. The iframe used to load on every page view, pulling
+ *  third-party JS into the critical path for a booking most visitors
+ *  never start. It now mounts on click. */
+const BookingPanel = () => {
+  const [loaded, setLoaded] = useState(false);
+
+  if (loaded) {
+    return (
+      <iframe
+        src={CALENDLY}
+        title="Book a 30-minute automation audit with Francis Tom Say"
+        loading="lazy"
+        className="h-[640px] w-full border-0"
       />
-      {/* Green gradient glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] pointer-events-none" />
+    );
+  }
 
-      <div className="max-w-3xl mx-auto relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30, scale: 0.96 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="text-center mb-12"
-        >
-          <span className="text-primary text-sm font-semibold tracking-widest uppercase">Get in Touch</span>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold mt-3 text-foreground">
-            Let's Work Together to Build Smarter AI Automation
-          </h2>
-          <p className="text-muted-foreground mt-4 max-w-xl mx-auto text-base">
-            Book a free 30-minute consultation to explore how AI-powered workflows can automate tasks, connect your tools, and streamline the way you work.
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30, scale: 0.96 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-          className="glass-card overflow-hidden rounded-xl shadow-[0_0_50px_-12px_hsl(var(--primary)/0.3)] border border-primary/10"
-        >
-          <iframe
-            src="https://calendly.com/sayfrancistom/30min"
-            width="100%"
-            height="700"
-            frameBorder="0"
-            title="Schedule a meeting"
-            className="w-full"
-          />
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20, scale: 0.96 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-10"
-        >
-          <a
-            href="mailto:sayfrancistom@gmail.com"
-            className="flex items-center gap-3 px-5 py-3 rounded-lg bg-secondary/60 border border-border/50 hover:border-primary/40 hover:bg-secondary/80 transition-all duration-200"
-          >
-            <Mail size={18} className="text-primary" />
-            <span className="text-sm text-foreground/85">sayfrancistom@gmail.com</span>
-          </a>
-          <a
-            href="https://wa.me/639541551360"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-3 px-5 py-3 rounded-lg bg-secondary/60 border border-border/50 hover:border-primary/40 hover:bg-secondary/80 transition-all duration-200"
-          >
-            <MessageCircle size={18} className="text-primary" />
-            <span className="text-sm text-foreground/85">+639 541 551 360</span>
-          </a>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20, scale: 0.96 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
-          className="flex items-center justify-center gap-5 mt-8"
-        >
-          {[
-            { icon: Twitter, href: "#" },
-            { icon: Linkedin, href: "#" },
-            { icon: Github, href: "#" },
-            { icon: Mail, href: "mailto:sayfrancistom@gmail.com" },
-          ].map(({ icon: Icon, href }, i) => (
-            <a
-              key={i}
-              href={href}
-              className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-200"
-            >
-              <Icon size={18} />
-            </a>
-          ))}
-        </motion.div>
+  return (
+    <div className="flex h-full min-h-[340px] flex-col items-center justify-center p-8 text-center">
+      <div className="flex h-11 w-11 items-center justify-center rounded-lg border border-brand/20 bg-brand/10">
+        <CalendarCheck size={20} className="text-brand-text" aria-hidden />
       </div>
-    </section>
+      <h3 className="mt-5 font-display text-lg font-semibold">Book a free 30-minute audit</h3>
+      <p className="mt-2.5 max-w-sm text-[13px] leading-relaxed text-muted-foreground">
+        We map one process end to end and I'll tell you what it costs you per month and
+        whether automating it is worth doing. No pitch.
+      </p>
+      <button type="button" onClick={() => setLoaded(true)} className="btn-primary mt-6">
+        Open calendar
+      </button>
+      <a
+        href={CALENDLY}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-3 font-mono text-[11px] text-muted-foreground underline-offset-4 hover:text-brand-text hover:underline"
+      >
+        or open in a new tab
+      </a>
+    </div>
   );
 };
+
+const Contact = () => (
+  <section id="contact" className="section-padding relative overflow-hidden">
+    <div
+      aria-hidden
+      className="absolute left-1/2 top-1/3 -z-10 h-[30rem] w-[46rem] -translate-x-1/2 rounded-full opacity-[0.12] blur-[130px]"
+      style={{ background: "radial-gradient(circle, hsl(var(--brand)) 0%, transparent 65%)" }}
+    />
+
+    <div className="section-shell">
+      <motion.div
+        initial={{ opacity: 0, y: 18 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        className="mb-12 text-center"
+      >
+        <p className="eyebrow">Get in touch</p>
+        <h2 className="mt-3 text-3xl font-semibold md:text-4xl">
+          Let's find the process worth automating first
+        </h2>
+        <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-muted-foreground">
+          30 minutes, no pitch — just a clear read on what's worth automating.
+        </p>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 18 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+        className="mx-auto max-w-xl"
+      >
+        <div className="card-surface overflow-hidden">
+          <BookingPanel />
+        </div>
+      </motion.div>
+
+      <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <a
+          href={`mailto:${EMAIL}`}
+          className="inline-flex items-center gap-2.5 rounded-lg border border-border bg-surface-1 px-4 py-2.5 text-[13px] text-muted-foreground transition-colors hover:border-border-strong hover:text-foreground"
+        >
+          <Mail size={15} className="text-brand-text" aria-hidden />
+          {EMAIL}
+        </a>
+        <a
+          href="https://wa.me/639541551360"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2.5 rounded-lg border border-border bg-surface-1 px-4 py-2.5 text-[13px] text-muted-foreground transition-colors hover:border-border-strong hover:text-foreground"
+        >
+          <MessageCircle size={15} className="text-brand-text" aria-hidden />
+          <span className="metric">+63 954 155 1360</span>
+        </a>
+      </div>
+    </div>
+  </section>
+);
 
 export default Contact;
