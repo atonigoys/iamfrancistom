@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { usePrefersReducedMotion } from "@/hooks/use-motion";
-import GlassCard from "./GlassCard";
 
 const steps = [
   {
@@ -75,59 +74,65 @@ const Process = () => {
     setStarted((prev) => (prev[i] ? prev : prev.map((v, idx) => (idx === i ? true : v))));
 
   return (
-    <section id="process" className="section-padding relative">
+    <section id="process" className="section-padding relative bg-surface-1">
       <div className="section-shell">
-        <div className="mb-12 text-center">
-          <p className="eyebrow">How it works</p>
-          <h2 className="mt-3 text-3xl font-semibold md:text-4xl">
-            From first call to handover
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-muted-foreground">
+        <div className="section-head">
+          <div>
+            <p className="eyebrow">How it works</p>
+            <h2 className="section-title">From first call to handover</h2>
+          </div>
+          <p className="section-lede">
             No surprises and no lock-in. You know the scope before the build starts, and you
             own the system after it ships.
           </p>
         </div>
 
-        <ol className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        {/* One panel, four steps. As in Services, the cell stays opaque and
+            only its contents animate in. */}
+        <ol className="panel-grid md:grid-cols-2 lg:grid-cols-4">
           {steps.map((s, i) => (
-            <motion.li
-              key={s.n}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              onViewportEnter={() => trigger(i)}
-            >
-              <GlassCard className="flex h-full flex-col p-6">
-                {/* Connector: each card draws its own left-to-right segment,
-                    in the same left-to-right stagger as the cards themselves,
-                    so the row reads as one continuous line drawing across it.
-                    Only shown at lg, where the 4 steps share a single row. */}
-                <span
-                  className="proc-rail hidden lg:block"
-                  data-play={started[i]}
-                  aria-hidden
-                />
+            <li key={s.n} className="panel-cell">
+              {/* Progress line: each cell draws its own left-to-right segment
+                  along the panel's top edge, each delayed a little more than
+                  the last, so the row reads as one continuous line drawing
+                  across it. Only shown at lg, where the 4 steps share a row. */}
+              <span
+                className="proc-rail hidden lg:block"
+                data-play={started[i]}
+                style={{ transitionDelay: `${i * 180}ms` }}
+                aria-hidden
+              />
 
-                <div className="flex items-baseline justify-between gap-3">
+              <motion.div
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                onViewportEnter={() => trigger(i)}
+                className="flex h-full flex-col"
+              >
+                <div className="flex items-start justify-between gap-3">
                   <StepNumber to={s.n} start={started[i]} />
-                  <span className="metric text-[10px] uppercase tracking-wider text-muted-foreground/70">
+                  <span className="metric rounded-full border border-border bg-surface-1 px-2.5 py-1 text-[10.5px] uppercase leading-[1.3] tracking-wider text-muted-foreground">
                     {s.dur}
                   </span>
                 </div>
 
-                <h3 className="gc-title mt-4 font-display text-base">{s.title}</h3>
-                <p className="gc-desc mt-2 max-w-[30ch] text-[13px]">{s.desc}</p>
+                <h3 className="mt-8 text-xl font-semibold leading-snug text-foreground">{s.title}</h3>
+                <p className="mt-2.5 text-[15px] leading-relaxed text-muted-foreground">{s.desc}</p>
 
-                <p className="mt-4 border-t border-white/[0.08] pt-4 text-[12px] leading-relaxed text-white/60">
-                  <span className="font-mono text-[10px] uppercase tracking-wider text-brand-text">
+                {/* mt-auto pins this block to the bottom of the cell, and the
+                    outcome reserves three lines where the steps share a row —
+                    together they keep the "You get" rule on one line across
+                    all four steps, however long each description runs. */}
+                <p className="mt-auto pt-7 text-sm leading-relaxed text-muted-foreground">
+                  <span className="mb-2.5 block border-t border-border pt-5 font-mono text-[11px] font-medium uppercase leading-none tracking-[0.18em] text-foreground">
                     You get
                   </span>
-                  <br />
-                  {s.out}
+                  <span className="block lg:min-h-[4.875em]">{s.out}</span>
                 </p>
-              </GlassCard>
-            </motion.li>
+              </motion.div>
+            </li>
           ))}
         </ol>
       </div>

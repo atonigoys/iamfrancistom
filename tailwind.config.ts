@@ -14,32 +14,29 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["Space Grotesk", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
         body: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
         mono: ["JetBrains Mono", "ui-monospace", "SFMono-Regular", "monospace"],
         // Kept so any stray `font-heading` still resolves to the display face.
-        heading: ["Space Grotesk", "ui-sans-serif", "system-ui", "sans-serif"],
+        heading: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
       },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
 
-        // Elevation ramp
+        // Monochrome surfaces: #F5F5F5 and #F8F8F8 on light, near-black on dark.
         "surface-1": "hsl(var(--surface-1))",
         "surface-2": "hsl(var(--surface-2))",
-        "surface-3": "hsl(var(--surface-3))",
 
         border: "hsl(var(--border))",
         "border-strong": "hsl(var(--border-strong))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
 
-        // Brand. `brand` fills, `brand-text` is the small-text-safe variant.
-        brand: {
-          DEFAULT: "hsl(var(--brand))",
-          hover: "hsl(var(--brand-hover))",
-          text: "hsl(var(--brand-text))",
-          dim: "hsl(var(--brand-dim))",
+        // Tailwind's base styles colour form placeholders with gray-400,
+        // which is a blue-tinted grey. Point it at the neutral one.
+        gray: {
+          400: "hsl(var(--muted-foreground))",
         },
 
         // shadcn/ui contract
@@ -76,6 +73,19 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      boxShadow: {
+        card: "var(--shadow-card)",
+        lift: "var(--shadow-lift)",
+      },
+      // Tailwind's built-in defaults for borders and focus rings are a
+      // blue-tinted grey and a blue. Point both at the monochrome tokens so
+      // nothing with hue can leak in, pseudo-elements included.
+      borderColor: {
+        DEFAULT: "hsl(var(--border))",
+      },
+      ringColor: {
+        DEFAULT: "hsl(var(--ring))",
       },
       transitionTimingFunction: {
         out: "var(--ease)",
