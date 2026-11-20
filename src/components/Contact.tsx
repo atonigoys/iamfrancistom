@@ -23,23 +23,25 @@ const BookingPanel = () => {
   }
 
   return (
-    <div className="flex h-full min-h-[340px] flex-col items-center justify-center p-8 text-center">
-      <div className="flex h-11 w-11 items-center justify-center rounded-lg border border-brand/20 bg-brand/10">
-        <CalendarCheck size={20} className="text-brand-text" aria-hidden />
+    <div className="flex h-full min-h-[360px] flex-col items-center justify-center px-6 py-12 text-center sm:px-10">
+      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-foreground text-background">
+        <CalendarCheck size={22} strokeWidth={1.75} aria-hidden />
       </div>
-      <h3 className="mt-5 font-display text-lg font-semibold">Book a free 30-minute audit</h3>
-      <p className="mt-2.5 max-w-sm text-[13px] leading-relaxed text-muted-foreground">
+      <h3 className="mt-6 text-xl font-semibold leading-snug sm:text-2xl sm:tracking-[-0.025em]">
+        Book a free 30-minute audit
+      </h3>
+      <p className="mt-3 max-w-sm text-[15px] leading-relaxed text-muted-foreground">
         We map one process end to end and I'll tell you what it costs you per month and
         whether automating it is worth doing. No pitch.
       </p>
-      <button type="button" onClick={() => setLoaded(true)} className="btn-primary mt-6">
+      <button type="button" onClick={() => setLoaded(true)} className="btn-primary btn-lg mt-8 w-full sm:w-auto">
         Open calendar
       </button>
       <a
         href={CALENDLY}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-3 font-mono text-[11px] text-muted-foreground underline-offset-4 hover:text-brand-text hover:underline"
+        className="mt-2 inline-flex min-h-[44px] items-center text-[13px] text-muted-foreground underline-offset-4 transition-colors duration-200 hover:text-foreground hover:underline"
       >
         or open in a new tab
       </a>
@@ -47,13 +49,15 @@ const BookingPanel = () => {
   );
 };
 
+/** The one dark section on the page — the closing call to action. Everything
+ *  inside inherits the inverted tokens from `.theme-dark`; the booking card
+ *  switches back to the light set so it reads as a white sheet on black. */
 const Contact = () => (
-  <section id="contact" className="section-padding relative overflow-hidden">
-    <div
-      aria-hidden
-      className="absolute left-1/2 top-1/3 -z-10 h-[30rem] w-[46rem] -translate-x-1/2 rounded-full opacity-[0.12] blur-[130px]"
-      style={{ background: "radial-gradient(circle, hsl(var(--brand)) 0%, transparent 65%)" }}
-    />
+  <section
+    id="contact"
+    className="theme-dark section-padding relative isolate overflow-hidden bg-background text-foreground"
+  >
+    <div aria-hidden className="grid-field mask-fade absolute inset-0 -z-10 opacity-70" />
 
     <div className="section-shell">
       <motion.div
@@ -61,13 +65,13 @@ const Contact = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className="mb-12 text-center"
+        className="mx-auto mb-12 max-w-3xl text-center md:mb-14"
       >
         <p className="eyebrow">Get in touch</p>
-        <h2 className="mt-3 text-3xl font-semibold md:text-4xl">
+        <h2 className="section-title">
           Let's find the process worth automating first
         </h2>
-        <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-muted-foreground">
+        <p className="section-lede mx-auto mt-5">
           30 minutes, no pitch — just a clear read on what's worth automating.
         </p>
       </motion.div>
@@ -79,26 +83,23 @@ const Contact = () => (
         transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
         className="mx-auto max-w-xl"
       >
-        <div className="card-surface overflow-hidden">
+        <div className="theme-light card-surface overflow-hidden text-foreground">
           <BookingPanel />
         </div>
       </motion.div>
 
-      <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-        <a
-          href={`mailto:${EMAIL}`}
-          className="inline-flex items-center gap-2.5 rounded-lg border border-border bg-surface-1 px-4 py-2.5 text-[13px] text-muted-foreground transition-colors hover:border-border-strong hover:text-foreground"
-        >
-          <Mail size={15} className="text-brand-text" aria-hidden />
+      <div className="mt-6 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
+        <a href={`mailto:${EMAIL}`} className="btn-secondary font-normal">
+          <Mail size={16} className="shrink-0" aria-hidden />
           {EMAIL}
         </a>
         <a
           href="https://wa.me/639541551360"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2.5 rounded-lg border border-border bg-surface-1 px-4 py-2.5 text-[13px] text-muted-foreground transition-colors hover:border-border-strong hover:text-foreground"
+          className="btn-secondary font-normal"
         >
-          <MessageCircle size={15} className="text-brand-text" aria-hidden />
+          <MessageCircle size={16} className="shrink-0" aria-hidden />
           <span className="metric">+63 954 155 1360</span>
         </a>
       </div>

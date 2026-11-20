@@ -1,6 +1,4 @@
-import { useCallback, useEffect, useRef } from "react";
 import { Linkedin, Github, Twitter, type LucideIcon } from "lucide-react";
-import { usePrefersReducedMotion, useRipple } from "@/hooks/use-motion";
 
 interface Social {
   label: string;
@@ -41,161 +39,101 @@ const links = [
   { label: "Contact", href: "#contact" },
 ];
 
-const Brand = () => {
-  const hostRef = useRef<HTMLDivElement>(null);
-  const rectRef = useRef<DOMRect | null>(null);
-  const pointRef = useRef({ x: 0, y: 0 });
-  const frameRef = useRef<number | null>(null);
-  const reduced = usePrefersReducedMotion();
+const Brand = () => (
+  <div className="tip-host relative">
+    <div className="flex items-start gap-3">
+      <span className="status-dot mt-[7px] h-2 w-2">
+        <span className="status-ping" aria-hidden />
+        <span className="status-core" aria-hidden />
+        <span className="tip">Available for new automation projects.</span>
+      </span>
 
-  const paint = useCallback(() => {
-    frameRef.current = null;
-    const el = hostRef.current;
-    const rect = rectRef.current;
-    if (!el || !rect) return;
-    const nx = ((pointRef.current.x - rect.left) / rect.width) * 100;
-    const ny = ((pointRef.current.y - rect.top) / rect.height) * 100;
-    el.style.setProperty("--mx", `${nx.toFixed(1)}%`);
-    el.style.setProperty("--my", `${ny.toFixed(1)}%`);
-  }, []);
-
-  const onEnter = useCallback(
-    (e: React.PointerEvent<HTMLDivElement>) => {
-      if (reduced || e.pointerType !== "mouse") return;
-      rectRef.current = hostRef.current?.getBoundingClientRect() ?? null;
-    },
-    [reduced]
-  );
-
-  const onMove = useCallback(
-    (e: React.PointerEvent<HTMLDivElement>) => {
-      if (reduced || e.pointerType !== "mouse" || !rectRef.current) return;
-      pointRef.current = { x: e.clientX, y: e.clientY };
-      frameRef.current ??= requestAnimationFrame(paint);
-    },
-    [paint, reduced]
-  );
-
-  const onLeave = useCallback(() => {
-    if (frameRef.current !== null) {
-      cancelAnimationFrame(frameRef.current);
-      frameRef.current = null;
-    }
-    rectRef.current = null;
-  }, []);
-
-  useEffect(
-    () => () => {
-      if (frameRef.current !== null) cancelAnimationFrame(frameRef.current);
-    },
-    []
-  );
-
-  return (
-    <div
-      ref={hostRef}
-      className="fb-brand"
-      onPointerEnter={onEnter}
-      onPointerMove={onMove}
-      onPointerLeave={onLeave}
-    >
-      <span className="fb-highlight" aria-hidden />
-
-      <div className="flex items-start gap-3">
-        <span className="fb-status">
-          <span className="fb-ping" aria-hidden />
-          <span className="fb-core" aria-hidden />
-          <span className="fb-tip">Available for new automation projects.</span>
+      <span>
+        <span className="block text-[22px] font-bold leading-[1.1] tracking-[0.01em] text-foreground">
+          FRANCIS TOM SAY
         </span>
-
-        <span>
-          <span className="fb-name">FRANCIS TOM SAY</span>
-          <span className="fb-role">AI Automation Specialist</span>
+        <span className="mt-1.5 block font-mono text-xs font-medium uppercase leading-[1.1] tracking-[0.16em] text-muted-foreground">
+          AI Automation Specialist
         </span>
-      </div>
-
-      <p className="fb-desc">
-        I build AI automation systems that eliminate repetitive work, streamline
-        operations, and help businesses scale using n8n, Make, Zapier, and AI.
-      </p>
+      </span>
     </div>
-  );
-};
 
-const Footer = () => {
-  const reduced = usePrefersReducedMotion();
-  const ripple = useRipple(reduced);
+    {/* Left margin clears the status-dot column (8px dot + 12px gap) so the
+        paragraph hangs flush with the name above it. */}
+    <p className="ml-5 mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground">
+      I build AI automation systems that eliminate repetitive work, streamline
+      operations, and help businesses scale using n8n, Make, Zapier, and AI.
+    </p>
+  </div>
+);
 
-  return (
-    <footer className="relative overflow-hidden px-5 pb-12 pt-14 sm:px-6">
-      <div className="fb-divider absolute inset-x-0 top-0" aria-hidden />
-      <div className="fb-aura" aria-hidden />
+/** Dark, and directly below the dark contact section: together they close
+ *  the page as one black block, split only by a hairline. */
+const Footer = () => (
+  <footer className="theme-dark gutter relative border-t border-border bg-background pb-10 pt-16 text-foreground">
+    <div className="section-shell">
+      <div className="flex flex-col gap-12 md:flex-row md:items-start md:justify-between">
+        <div>
+          <Brand />
 
-      <div className="section-shell relative">
-        <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
-          <div>
-            <Brand />
-
-            <ul className="mt-7 flex flex-wrap gap-2.5">
-              {socials
-                .filter((s): s is Social & { href: string } => s.href !== null)
-                .map((s) => {
-                  const external = s.href.startsWith("http");
-                  return (
-                    <li key={s.label}>
-                      <a
-                        href={s.href}
-                        target={external ? "_blank" : undefined}
-                        rel={external ? "noopener noreferrer" : undefined}
-                        aria-label={s.label}
-                        title={s.label}
-                        className="fs-btn"
-                        onPointerDown={ripple}
-                      >
-                        {s.icon ? (
-                          <s.icon size={20} aria-hidden />
-                        ) : (
-                          <span
-                            aria-hidden
-                            className="font-mono text-[13px] font-semibold leading-none"
-                          >
-                            {s.glyph}
-                          </span>
-                        )}
-                      </a>
-                    </li>
-                  );
-                })}
-            </ul>
-          </div>
-
-          <nav aria-label="Footer">
-            <ul className="grid grid-cols-2 gap-x-10 gap-y-2.5 sm:grid-cols-1">
-              {links.map((l) => (
-                <li key={l.href}>
-                  <a
-                    href={l.href}
-                    className="text-[13px] text-[#a1a1aa] transition-colors duration-200 hover:text-foreground"
-                  >
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <ul className="ml-5 mt-8 flex flex-wrap gap-2.5">
+            {socials
+              .filter((s): s is Social & { href: string } => s.href !== null)
+              .map((s) => {
+                const external = s.href.startsWith("http");
+                return (
+                  <li key={s.label}>
+                    <a
+                      href={s.href}
+                      target={external ? "_blank" : undefined}
+                      rel={external ? "noopener noreferrer" : undefined}
+                      aria-label={s.label}
+                      title={s.label}
+                      className="flex h-11 w-11 items-center justify-center rounded-[10px] border border-border text-muted-foreground transition-colors duration-200 ease-out hover:border-foreground hover:bg-foreground hover:text-background"
+                    >
+                      {s.icon ? (
+                        <s.icon size={19} strokeWidth={1.75} aria-hidden />
+                      ) : (
+                        <span
+                          aria-hidden
+                          className="font-mono text-[13px] font-semibold leading-none"
+                        >
+                          {s.glyph}
+                        </span>
+                      )}
+                    </a>
+                  </li>
+                );
+              })}
+          </ul>
         </div>
 
-        <div className="mt-12 flex flex-col gap-2 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-mono text-[11px] text-muted-foreground/70">
-            © {new Date().getFullYear()} Francis Tom Say
-          </p>
-          <p className="font-mono text-[11px] text-muted-foreground/70">
-            Built with React, Tailwind &amp; Vite
-          </p>
-        </div>
+        <nav aria-label="Footer" className="ml-5 md:ml-0">
+          <ul className="grid grid-cols-2 gap-x-14">
+            {links.map((l) => (
+              <li key={l.href}>
+                <a
+                  href={l.href}
+                  className="inline-flex min-h-[44px] items-center text-sm text-muted-foreground transition-colors duration-200 hover:text-foreground"
+                >
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
-    </footer>
-  );
-};
+
+      <div className="mt-14 flex flex-col gap-2 border-t border-border pt-7 sm:flex-row sm:items-center sm:justify-between">
+        <p className="font-mono text-[11px] text-muted-foreground">
+          © {new Date().getFullYear()} Francis Tom Say
+        </p>
+        <p className="font-mono text-[11px] text-muted-foreground">
+          Built with React, Tailwind &amp; Vite
+        </p>
+      </div>
+    </div>
+  </footer>
+);
 
 export default Footer;

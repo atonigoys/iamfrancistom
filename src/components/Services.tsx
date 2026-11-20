@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Workflow, Plug, MessageSquare, GitBranch, Bot, Compass } from "lucide-react";
-import GlassCard from "./GlassCard";
 
 const services = [
   {
@@ -36,39 +35,38 @@ const services = [
 ];
 
 const Services = () => (
-  <section id="services" className="section-padding relative bg-surface-1/40">
+  <section id="services" className="section-padding relative bg-surface-1">
     <div className="section-shell">
-      <div className="mb-12 text-center">
-        <p className="eyebrow">What I do</p>
-        <h2 className="mt-3 text-3xl font-semibold md:text-4xl">
-          Six ways I remove manual work
-        </h2>
-        <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-muted-foreground">
+      <div className="section-head">
+        <div>
+          <p className="eyebrow">What I do</p>
+          <h2 className="section-title">Six ways I remove manual work</h2>
+        </div>
+        <p className="section-lede">
           Most engagements start with one process and expand once the first one pays for itself.
         </p>
       </div>
 
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {/* One panel, six cells. The cell stays opaque and only its contents
+          fade in — animating the cell itself would flash the hairline colour
+          underneath it for the length of the reveal. */}
+      <div className="panel-grid sm:grid-cols-2 lg:grid-cols-3">
         {services.map((s, i) => (
-          <motion.div
-            key={s.title}
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.5, delay: (i % 3) * 0.09, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <GlassCard tilt={4} className="p-6">
-              <span className="gc-icon-float">
-                <span className="gc-icon-bg-glow" aria-hidden />
-                <span className="gc-icon">
-                  <s.icon size={18} className="text-brand-text" aria-hidden />
-                </span>
+          <div key={s.title} className="panel-cell group">
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: (i % 3) * 0.08, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <span className="icon-tile">
+                <s.icon size={20} strokeWidth={1.75} aria-hidden />
               </span>
 
-              <h3 className="gc-title mt-5 font-display text-[15px]">{s.title}</h3>
-              <p className="gc-desc mt-2.5 max-w-[34ch] text-[13px]">{s.desc}</p>
-            </GlassCard>
-          </motion.div>
+              <h3 className="mt-7 text-lg font-semibold leading-snug text-foreground">{s.title}</h3>
+              <p className="mt-2.5 text-[15px] leading-relaxed text-muted-foreground">{s.desc}</p>
+            </motion.div>
+          </div>
         ))}
       </div>
     </div>
